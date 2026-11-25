@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atomic Habits × Strength Training Blueprint</title>
+  <style>
+    /* Fallback palette used only when opened outside Antigravity (e.g. directly in Chrome/Safari via file://).
+       We never redefine host tokens (--background, --card, etc.) so Antigravity theming always takes precedence. */
+    :root {
+      --fb-bg: #f4f6f9;
+      --fb-content: #eef2f6;
+      --fb-card: #ffffff;
+      --fb-border: #d8e0ea;
+      --fb-card-border: #e3e9f0;
+      --fb-fg: #111827;
+      --fb-muted: #526074;
+      --fb-primary: #2563eb;
+      --fb-primary-fg: #ffffff;
+      --fb-secondary: #e2e8f0;
+      --fb-success: #16a34a;
+      --fb-warning: #d97706;
+      --fb-error: #dc2626;
+      --fb-chart1: #0284c7;
+      --fb-chart2: #0d9488;
+      --fb-chart3: #7c3aed;
+      --fb-chart4: #ea580c;
+      --fb-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fb-bg: #0d1117;
+        --fb-content: #161b22;
+        --fb-card: #1c222b;
+        --fb-border: #303947;
+        --fb-card-border: #2a323f;
+        --fb-fg: #eef2f7;
+        --fb-muted: #98a4b5;
+        --fb-primary: #60a5fa;
+        --fb-primary-fg: #0b1220;
+        --fb-secondary: #262f3d;
+        --fb-success: #4ade80;
+        --fb-warning: #fbbf24;
+        --fb-error: #f87171;
+        --fb-chart1: #38bdf8;
+        --fb-chart2: #2dd4bf;
+        --fb-chart3: #a78bfa;
+        --fb-chart4: #fb923c;
+        --fb-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--background, var(--fb-bg));
+      color: var(--foreground, var(--fb-fg));
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 18px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .card {
+      background-color: var(--card, var(--fb-card));
+      border: 1px solid var(--border, var(--fb-border));
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: var(--fb-shadow);
+    }
+
+    .subpanel {
+      background-color: var(--content, var(--fb-content));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .inner-box {
+      background-color: var(--card, var(--fb-card));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    h1 { margin: 8px 0 6px; font-size: 24px; line-height: 1.25; letter-spacing: -0.02em; }
+    h2 { margin: 0 0 4px; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; }
+    h3 { margin: 0; font-size: 15px; line-height: 1.35; }
+    p  { margin: 0; }
+
+    .muted { color: var(--muted-foreground, var(--fb-muted)); }
+    .small { font-size: 12px; }
+    .mono  { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-variant-numeric: tabular-nums; }
+    .bold  { font-weight: 700; }
+    .semi  { font-weight: 600; }
+
+    .text-primary { color: var(--primary, var(--fb-primary)); }
+    .text-success { color: var(--success, var(--fb-success)); }
+    .text-warning { color: var(--warning, var(--fb-warning)); }
+    .text-error   { color: var(--error, var(--fb-error)); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 14%, transparent);
+      color: var(--primary, var(--fb-primary));
+    }
+
+    .badge-success {
+      background-color: color-mix(in srgb, var(--success, var(--fb-success)) 15%, transparent);
+      color: var(--success, var(--fb-success));
+    }
+    .badge-warning {
+      background-color: color-mix(in srgb, var(--warning, var(--fb-warning)) 16%, transparent);
+      color: var(--warning, var(--fb-warning));
+    }
+    .badge-chart2 {
+      background-color: color-mix(in srgb, var(--chart-2, var(--fb-chart2)) 16%, transparent);
+      color: var(--chart-2, var(--fb-chart2));
+    }
+    .badge-chart3 {
+      background-color: color-mix(in srgb, var(--chart-3, var(--fb-chart3)) 16%, transparent);
+      color: var(--chart-3, var(--fb-chart3));
+    }
+
+    /* Header layout */
+    .header-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .header-copy { flex: 1 1 420px; }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
+      gap: 10px;
+    }
+    .stat-box {
+      background-color: var(--content, var(--fb-content));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .stat-val { font-size: 14px; font-weight: 700; margin-top: 2px; }
+
+    /* Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .grid-12 {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; }
+    .col-7 { grid-column: span 7; }
+
+    .laws-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    @media (max-width: 860px) {
+      .grid-2, .grid-12 { grid-template-columns: 1fr; }
+      .col-5, .col-6, .col-7 { grid-column: span 1; }
+      .laws-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .stat-row { grid-template-columns: 1fr; width: 100%; }
+      .week-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    /* Buttons & Interactive Controls */
+    button {
+      font-family: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .btn {
+      padding: 7px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--border, var(--fb-border));
+      background-color: var(--content, var(--fb-content));
+      color: var(--foreground, var(--fb-fg));
+      font-weight: 600;
+      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+    .btn:hover { background-color: var(--secondary, var(--fb-secondary)); }
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background-color: var(--primary, var(--fb-primary));
+      border-color: var(--primary, var(--fb-primary));
+      color: var(--primary-foreground, var(--fb-primary-fg));
+    }
+    .btn-primary:hover { opacity: 0.92; background-color: var(--primary, var(--fb-primary)); }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .pill {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border, var(--fb-border));
+      background-color: var(--content, var(--fb-content));
+      color: var(--muted-foreground, var(--fb-muted));
+      font-weight: 600;
+    }
+    .pill.active {
+      border-color: var(--primary, var(--fb-primary));
+      background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 14%, transparent);
+      color: var(--primary, var(--fb-primary));
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    /* Identity rings */
+    .ring-btn { cursor: pointer; transition: opacity 0.18s ease; }
+    .ring-btn:hover { opacity: 0.9; }
+    .rings-wrap { display: flex; justify-content: center; align-items: center; }
+
+    /* Tweak cards */
+    .tweak-list { display: flex; flex-direction: column; gap: 10px; }
+    .tweak-card {
+      width: 100%;
+      text-align: left;
+      padding: 13px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      background-color: var(--content, var(--fb-content));
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .tweak-card:hover { border-color: var(--border, var(--fb-border)); }
+    .tweak-card.active {
+      border-color: var(--primary, var(--fb-primary));
+      background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 12%, transparent);
+    }
+    .tweak-tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 1px 7px;
+      border-radius: 6px;
+      background-color: var(--card, var(--fb-card));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      color: var(--muted-foreground, var(--fb-muted));
+      margin-left: 6px;
+      font-weight: 500;
+    }
+    .checkbox-box {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      border: 1.5px solid var(--border, var(--fb-border));
+      background-color: var(--card, var(--fb-card));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .tweak-card.active .checkbox-box {
+      background-color: var(--primary, var(--fb-primary));
+      border-color: var(--primary, var(--fb-primary));
+      color: var(--primary-foreground, var(--fb-primary-fg));
+    }
+
+    /* Meters */
+    .meters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px solid var(--card-border, var(--fb-card-border));
+    }
+    @media (max-width: 560px) { .meters-grid { grid-template-columns: 1fr; } }
+    .meter-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+    .meter-track {
+      height: 10px;
+      border-radius: 999px;
+      background-color: var(--background, var(--fb-bg));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
+    }
+
+    /* Law tabs */
+    .law-tab {
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      background-color: var(--content, var(--fb-content));
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .law-tab:hover { border-color: var(--border, var(--fb-border)); }
+    .law-tab.active {
+      border-color: var(--primary, var(--fb-primary));
+      background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 12%, transparent);
+    }
+
+    /* Range sliders */
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary, var(--fb-primary));
+      cursor: pointer;
+      margin: 4px 0 0;
+    }
+
+    /* Lists */
+    ul.clean-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    ul.clean-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; }
+    .bullet-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+
+    ol.steps-list, ul.track-list {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted-foreground, var(--fb-muted));
+    }
+    ol.steps-list strong, ul.track-list strong { color: var(--foreground, var(--fb-fg)); }
+
+    /* Tracker day button */
+    .day-btn {
+      border-radius: 10px;
+      border: 1.5px solid var(--card-border, var(--fb-card-border));
+      background-color: var(--card, var(--fb-card));
+      color: var(--muted-foreground, var(--fb-muted));
+      padding: 9px 4px;
+      text-align: center;
+      transition: transform 0.1s ease, border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .day-btn:active { transform: scale(0.95); }
+    .day-btn.state-2 {
+      border-color: var(--success, var(--fb-success));
+      background-color: color-mix(in srgb, var(--success, var(--fb-success)) 15%, transparent);
+      color: var(--success, var(--fb-success));
+    }
+    .day-btn.state-1 {
+      border-color: var(--primary, var(--fb-primary));
+      background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 14%, transparent);
+      color: var(--primary, var(--fb-primary));
+    }
+
+    .status-banner {
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .status-success {
+      border-color: var(--success, var(--fb-success));
+      background-color: color-mix(in srgb, var(--success, var(--fb-success)) 14%, transparent);
+    }
+    .status-warning {
+      border-color: var(--warning, var(--fb-warning));
+      background-color: color-mix(in srgb, var(--warning, var(--fb-warning)) 15%, transparent);
+    }
+    .status-error {
+      border-color: var(--error, var(--fb-error));
+      background-color: color-mix(in srgb, var(--error, var(--fb-error)) 14%, transparent);
+    }
+    .status-primary {
+      border-color: var(--primary, var(--fb-primary));
+      background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 14%, transparent);
+    }
+
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--card-border, var(--fb-card-border));
+      font-size: 12px;
+      color: var(--muted-foreground, var(--fb-muted));
+    }
+    .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+    .svg-smooth { transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+    .stack-gap { display: flex; flex-direction: column; gap: 14px; }
+    .stack-sm  { display: flex; flex-direction: column; gap: 8px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="card">
+      <div class="header-grid">
+        <div class="header-copy">
+          <div class="badge">
+            <span>Atomic Habits Applied</span>
+            <span>•</span>
+            <span>Personalized Strength System</span>
+          </div>
+          <h1>From Upstairs &amp; Chilly Garage to Consistent Strength</h1>
+          <p class="muted">
+            How to engineer cues, friction, and progressive muscle challenge around your exact setup:
+            living upstairs, a cold downstairs garage gym, and daily dog walks on a hill.
+          </p>
+        </div>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="small muted">Main Friction</div>
+            <div class="stat-val text-warning">Stairs + Cold</div>
+          </div>
+          <div class="stat-box">
+            <div class="small muted">Best Anchor</div>
+            <div class="stat-val text-success">Dog Walks</div>
+          </div>
+          <div class="stat-box">
+            <div class="small muted">Hidden Asset</div>
+            <div class="stat-val text-primary">The Hill</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Section 1: Identity Rings -->
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>1. Three Layers of Behavior Change (Start From the Center)</h2>
+          <p class="muted">Click any ring to see why identity-based habits beat willpower on chilly days.</p>
+        </div>
+        <span class="small muted">Interactive • Click a ring</span>
+      </div>
+
+      <div class="grid-12" style="align-items: center;">
+        <div class="col-5 rings-wrap">
+          <svg viewBox="0 0 280 280" width="250" height="250" role="img" aria-label="Three layers of behavior change">
+            <g class="ring-btn" data-layer="outcomes">
+              <circle id="ring-outcomes" cx="140" cy="140" r="126"
+                fill="var(--chart-3, var(--fb-chart3))" fill-opacity="0.14"
+                stroke="var(--chart-3, var(--fb-chart3))" stroke-width="2" />
+              <text x="140" y="38" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">OUTCOMES</text>
+              <text x="140" y="53" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">What you get</text>
+            </g>
+            <g class="ring-btn" data-layer="processes">
+              <circle id="ring-processes" cx="140" cy="140" r="86"
+                fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.18"
+                stroke="var(--chart-2, var(--fb-chart2))" stroke-width="2" />
+              <text x="140" y="80" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">PROCESSES</text>
+              <text x="140" y="95" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">What you do</text>
+            </g>
+            <g class="ring-btn" data-layer="identity">
+              <circle id="ring-identity" cx="140" cy="140" r="46"
+                fill="var(--primary, var(--fb-primary))" fill-opacity="0.24"
+                stroke="var(--primary, var(--fb-primary))" stroke-width="3.5" />
+              <text x="140" y="138" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">IDENTITY</text>
+              <text x="140" y="153" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Who you are</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="col-7">
+          <div class="pill-row">
+            <button data-layer-btn="identity" class="pill active">Identity (Core)</button>
+            <button data-layer-btn="processes" class="pill">Processes (System)</button>
+            <button data-layer-btn="outcomes" class="pill">Outcomes (Lagging)</button>
+          </div>
+          <div id="layer-panel" class="subpanel stack-sm"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Home & Hill Friction Simulator -->
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>2. Your Home &amp; Hill Friction Simulator</h2>
+          <p class="muted">
+            Toggle Atomic Habit tweaks on the right to see how redesigning your upstairs → garage → hill flow collapses start resistance.
+          </p>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button id="btn-reset-tweaks" class="btn">Reset (Current Friction)</button>
+          <button id="btn-all-tweaks" class="btn btn-primary">Apply Full System</button>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <div class="col-7 subpanel">
+          <svg viewBox="0 0 600 325" style="width:100%; height:auto; display:block;" role="img" aria-label="Home layout and hill dog walk diagram">
+            <!-- Ground & Hill Slope -->
+            <path d="M 0 268 L 332 268 Q 412 268 474 214 L 600 112 L 600 325 L 0 325 Z"
+              fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.14"
+              stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+
+            <!-- House Roof -->
+            <path d="M 18 46 L 175 10 L 332 46 Z"
+              fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.14"
+              stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+
+            <!-- House Outer Shell -->
+            <rect x="28" y="46" width="295" height="222" rx="6"
+              fill="var(--card, var(--fb-card))" stroke="var(--border, var(--fb-border))" stroke-width="2" />
+            <!-- Floor Divider -->
+            <line x1="28" y1="154" x2="323" y2="154" stroke="var(--border, var(--fb-border))" stroke-width="2" />
+
+            <!-- Upstairs Zone -->
+            <rect x="36" y="54" width="279" height="92" rx="5"
+              fill="var(--chart-4, var(--fb-chart4))" fill-opacity="0.08" />
+            <text x="48" y="74" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">UPSTAIRS LIVING</text>
+            <text x="48" y="90" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Warm, cozy, high inertia</text>
+
+            <!-- Upstairs Cue Badge -->
+            <g id="svg-cue-upstairs" opacity="0.2" class="svg-smooth">
+              <rect x="48" y="98" width="152" height="38" rx="6"
+                fill="var(--primary, var(--fb-primary))" fill-opacity="0.16"
+                stroke="var(--primary, var(--fb-primary))" stroke-width="1.5" />
+              <text x="58" y="114" fill="var(--foreground, var(--fb-fg))" font-size="11" font-weight="700">Visible Cues Ready</text>
+              <text x="58" y="128" fill="var(--muted-foreground, var(--fb-muted))" font-size="10">Shoes + kettlebell / bar</text>
+            </g>
+
+            <!-- Stairs -->
+            <g>
+              <rect x="242" y="92" width="68" height="122" rx="4"
+                fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.1"
+                stroke="var(--border, var(--fb-border))" stroke-dasharray="3 3" />
+              <path d="M 248 112 H 262 V 128 H 276 V 144 H 290 V 160 H 304 V 202"
+                fill="none" stroke="var(--muted-foreground, var(--fb-muted))" stroke-width="2" />
+              <text x="276" y="106" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10" font-weight="700">STAIRS</text>
+            </g>
+
+            <!-- Garage Gym Zone -->
+            <rect id="svg-garage-bg" x="36" y="162" width="198" height="98" rx="5"
+              fill="var(--chart-1, var(--fb-chart1))" fill-opacity="0.14"
+              stroke="var(--chart-1, var(--fb-chart1))" stroke-width="1.5" class="svg-smooth" />
+            <text x="48" y="182" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">GARAGE HOME GYM</text>
+            <text id="svg-garage-temp" x="48" y="198" fill="var(--chart-1, var(--fb-chart1))" font-size="11" font-weight="700">Chilly (High Friction)</text>
+
+            <!-- Mini Barbell Icon -->
+            <g opacity="0.55">
+              <line x1="176" y1="226" x2="218" y2="226" stroke="var(--foreground, var(--fb-fg))" stroke-width="2.5" stroke-linecap="round" />
+              <rect x="179" y="218" width="5" height="16" rx="1.5" fill="var(--foreground, var(--fb-fg))" />
+              <rect x="210" y="218" width="5" height="16" rx="1.5" fill="var(--foreground, var(--fb-fg))" />
+            </g>
+
+            <!-- Garage Plan / 2-Min Floor Badge -->
+            <g id="svg-garage-plan" opacity="0.2" class="svg-smooth">
+              <rect x="48" y="208" width="174" height="42" rx="6"
+                fill="var(--success, var(--fb-success))" fill-opacity="0.16"
+                stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
+              <text x="58" y="225" fill="var(--foreground, var(--fb-fg))" font-size="11" font-weight="700">Zero-Decision Floor</text>
+              <text x="58" y="240" fill="var(--muted-foreground, var(--fb-muted))" font-size="10">2-min rule + 3-lift board</text>
+            </g>
+
+            <!-- Smart Heater Glow -->
+            <g id="svg-heater" opacity="0.18" class="svg-smooth">
+              <circle cx="212" cy="184" r="16"
+                fill="var(--warning, var(--fb-warning))" fill-opacity="0.24"
+                stroke="var(--warning, var(--fb-warning))" stroke-width="1.5" />
+              <text x="212" y="188" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="9.5" font-weight="700">WARM</text>
+            </g>
+
+            <!-- Hill & Dog Walk Area -->
+            <text x="458" y="160" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">NEIGHBORHOOD HILL</text>
+            <text x="458" y="176" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Daily Dog Walks</text>
+
+            <!-- Ruck Pack Badge -->
+            <g id="svg-ruck" opacity="0.2" class="svg-smooth">
+              <rect x="438" y="188" width="150" height="42" rx="6"
+                fill="var(--primary, var(--fb-primary))" fill-opacity="0.16"
+                stroke="var(--primary, var(--fb-primary))" stroke-width="1.5" />
+              <text x="448" y="205" fill="var(--foreground, var(--fb-fg))" font-size="11" font-weight="700">Ruck / Weighted Walk</text>
+              <text x="448" y="220" fill="var(--muted-foreground, var(--fb-muted))" font-size="10">Hill = built-in leg load</text>
+            </g>
+
+            <!-- High Friction Path (Direct Upstairs -> Cold Garage) -->
+            <path id="svg-hard-path" d="M 192 124 Q 228 150 192 178"
+              fill="none" stroke="var(--error, var(--fb-error))" stroke-width="2.5" stroke-dasharray="5 4" class="svg-smooth" />
+            <text id="svg-hard-label" x="202" y="150" fill="var(--error, var(--fb-error))" font-size="10.5" font-weight="700">Cold Start</text>
+
+            <!-- Smooth Return Stack Path (Hill Walk Return -> Warm Garage) -->
+            <path id="svg-stack-path" d="M 468 244 Q 368 294 238 244"
+              fill="none" stroke="var(--success, var(--fb-success))" stroke-width="3.5" opacity="0.18" class="svg-smooth" />
+            <g id="svg-stack-label" opacity="0.2" class="svg-smooth">
+              <rect x="282" y="272" width="182" height="38" rx="7"
+                fill="var(--card, var(--fb-card))" stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
+              <text x="373" y="288" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="11" font-weight="700">WALK RETURN STACK</text>
+              <text x="373" y="302" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10">Warm + shoes on → straight in</text>
+            </g>
+          </svg>
+
+          <div class="meters-grid">
+            <div>
+              <div class="meter-label">
+                <span class="muted semi">Activation Friction</span>
+                <span id="friction-val" class="mono bold">88%</span>
+              </div>
+              <div class="meter-track">
+                <div id="friction-bar" class="meter-fill" style="width:88%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="meter-label">
+                <span class="muted semi">Likely Weekly Muscle Sessions</span>
+                <span id="sessions-val" class="mono bold">~0.5 / wk</span>
+              </div>
+              <div class="meter-track">
+                <div id="sessions-bar" class="meter-fill" style="width:14%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="sim-summary" class="inner-box small muted" style="margin-top: 12px;"></div>
+        </div>
+
+        <div class="col-5 tweak-list" id="tweaks-container"></div>
+      </div>
+    </section>
+
+    <!-- Section 3: Four Laws -->
+    <section class="card stack-gap">
+      <div>
+        <h2>3. The Four Laws Applied to Your Setup</h2>
+        <p class="muted">Every habit follows a 4-stage neurological loop. Select any law to inspect your specific friction point and concrete playbook.</p>
+      </div>
+      <div class="laws-grid" id="law-tabs"></div>
+      <div id="law-detail" class="subpanel"></div>
+    </section>
+
+    <!-- Section 4 & 5: Goldilocks + Plateau -->
+    <section class="grid-2">
+      <!-- Goldilocks -->
+      <div class="card stack-gap">
+        <div>
+          <h2>4. The Goldilocks Rule (Muscle Challenge)</h2>
+          <p class="muted">
+            Motivation and strength adaptation peak right at the edge of current ability (~1–4% harder than last time). Drag the slider to test effort levels.
+          </p>
+        </div>
+
+        <div class="subpanel stack-sm">
+          <svg viewBox="0 0 420 178" style="width:100%; height:auto; display:block;" role="img" aria-label="Goldilocks bell curve">
+            <rect x="20" y="14" width="125" height="126" fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.08" />
+            <rect x="145" y="14" width="130" height="126" fill="var(--success, var(--fb-success))" fill-opacity="0.13" />
+            <rect x="275" y="14" width="125" height="126" fill="var(--error, var(--fb-error))" fill-opacity="0.11" />
+
+            <text x="82" y="32" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5" font-weight="700">BOREDOM</text>
+            <text x="210" y="32" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="11" font-weight="700">GOLDILOCKS ZONE</text>
+            <text x="337" y="32" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="10.5" font-weight="700">BURNOUT / DREAD</text>
+
+            <line x1="20" y1="140" x2="400" y2="140" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <path id="gold-curve" d="" fill="none" stroke="var(--primary, var(--fb-primary))" stroke-width="3" stroke-linecap="round" />
+
+            <line id="gold-guide" x1="210" y1="42" x2="210" y2="140" stroke="var(--foreground, var(--fb-fg))" stroke-width="1.5" stroke-dasharray="3 3" />
+            <circle id="gold-dot" cx="210" cy="42" r="6.5" fill="var(--success, var(--fb-success))" stroke="var(--card, var(--fb-card))" stroke-width="2" />
+
+            <text x="24" y="160" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Too Easy (5+ RIR)</text>
+            <text x="210" y="160" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">1–3 Reps in Reserve</text>
+            <text x="396" y="160" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Max Grind / Wrecked</text>
+          </svg>
+
+          <div>
+            <div class="meter-label" style="margin-bottom:2px;">
+              <label for="gold-slider" class="muted semi">Training Challenge Level</label>
+              <span id="gold-label" class="semi text-success">Goldilocks Edge (1–3 RIR)</span>
+            </div>
+            <input id="gold-slider" type="range" min="0" max="100" value="52" />
+          </div>
+        </div>
+
+        <div id="gold-feedback" class="subpanel stack-sm"></div>
+      </div>
+
+      <!-- Plateau of Latent Potential -->
+      <div class="card stack-gap">
+        <div>
+          <h2>5. Plateau of Latent Potential</h2>
+          <p class="muted">
+            Strength compounds quietly before showing in the mirror. Slide across weeks 1–16 to see why logging numbers carries you past the "Valley of Disappointment."
+          </p>
+        </div>
+
+        <div class="subpanel stack-sm">
+          <svg viewBox="0 0 420 178" style="width:100%; height:auto; display:block;" role="img" aria-label="Plateau of latent potential chart">
+            <line x1="35" y1="140" x2="395" y2="140" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <line x1="35" y1="18" x2="35" y2="140" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+
+            <path id="valley-fill" d="" fill="var(--warning, var(--fb-warning))" fill-opacity="0.18" />
+            <line x1="35" y1="140" x2="390" y2="22" stroke="var(--muted-foreground, var(--fb-muted))" stroke-width="2" stroke-dasharray="5 4" />
+            <text x="148" y="74" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5" transform="rotate(-18 148 74)">What you expect</text>
+
+            <path id="actual-curve" d="" fill="none" stroke="var(--primary, var(--fb-primary))" stroke-width="3" stroke-linecap="round" />
+            <text x="305" y="42" fill="var(--primary, var(--fb-primary))" font-size="10.5" font-weight="700">Actual compounding</text>
+            <text x="160" y="122" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="10.5" font-weight="700">Valley of Disappointment</text>
+
+            <line id="week-line" x1="125" y1="18" x2="125" y2="140" stroke="var(--foreground, var(--fb-fg))" stroke-width="1.5" stroke-dasharray="3 3" />
+            <circle id="week-dot-exp" cx="125" cy="110" r="4.5" fill="var(--muted-foreground, var(--fb-muted))" stroke="var(--card, var(--fb-card))" stroke-width="1.5" />
+            <circle id="week-dot-act" cx="125" cy="134" r="6" fill="var(--primary, var(--fb-primary))" stroke="var(--card, var(--fb-card))" stroke-width="2" />
+
+            <text x="35" y="160" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Week 1</text>
+            <text x="215" y="160" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Week 8</text>
+            <text x="390" y="160" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Week 16</text>
+          </svg>
+
+          <div>
+            <div class="meter-label" style="margin-bottom:2px;">
+              <label for="week-slider" class="muted semi">Timeline Explorer</label>
+              <span id="week-label" class="mono semi text-primary">Week 4</span>
+            </div>
+            <input id="week-slider" type="range" min="1" max="16" value="4" />
+          </div>
+        </div>
+
+        <div id="week-feedback" class="subpanel stack-sm"></div>
+      </div>
+    </section>
+
+    <!-- Section 6: Two-Track System + Interactive Weekly Tracker -->
+    <section class="card stack-gap">
+      <div>
+        <h2>6. Your Two-Track Weekly System &amp; "Never Miss Twice" Tracker</h2>
+        <p class="muted">
+          Pair planned post-walk garage sessions with effortless hill &amp; house muscle challenges. Click any day in the tracker to test how "Never Miss Twice" protects momentum.
+        </p>
+      </div>
+
+      <div class="grid-12">
+        <div class="col-7 grid-2">
+          <div class="subpanel stack-sm">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+              <span class="small bold text-primary" style="text-transform:uppercase; letter-spacing:0.04em;">Track A • Garage Lifts</span>
+              <span class="badge">2–3x / wk</span>
+            </div>
+            <h3>The Post-Walk Warm Garage Stack</h3>
+            <ol class="steps-list">
+              <li><strong>Cue (Leaving):</strong> Tap a smart-plug garage heater on when you grab the dog leash.</li>
+              <li><strong>Warm-up (Built-in):</strong> Walk the dog up the hill—heart rate and joints are warm on return.</li>
+              <li><strong>2-Min Floor:</strong> Walk straight into the garage before going upstairs. Do <em>one</em> warm-up set.</li>
+              <li><strong>Goldilocks Set:</strong> 2–3 core lifts (squat/hinge, push, pull), 2–3 hard sets each (1–3 reps in reserve).</li>
+              <li><strong>Reward:</strong> Log weight × reps on a garage whiteboard. Beat one number next time.</li>
+            </ol>
+          </div>
+
+          <div class="subpanel stack-sm">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+              <span class="small bold text-success" style="text-transform:uppercase; letter-spacing:0.04em;">Track B • Everyday Muscle</span>
+              <span class="badge badge-success">Daily / Hill</span>
+            </div>
+            <h3>Hill &amp; Upstairs Challenge</h3>
+            <ul class="track-list">
+              <li><strong>Hill Rucking:</strong> Keep a 10–25 lb backpack or weighted vest next to the leash. Turn 2–3 dog walks/week into glute, calf, and core training.</li>
+              <li><strong>Upstairs Micro-Sets:</strong> Put a doorway pull-up bar or one kettlebell upstairs—1 sub-max set while coffee brews.</li>
+              <li><strong>Stair Tax:</strong> Take stairs two at a time or carry loads deliberately on trips up.</li>
+              <li><strong>Zero-Friction Fallback:</strong> Too cold or rushed? 1 hard set of push-ups + split squats upstairs still casts a vote.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-5 subpanel stack-gap" style="justify-content:space-between;">
+          <div class="stack-sm">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <h3>Interactive Week Simulator</h3>
+              <span class="small muted">Click any day</span>
+            </div>
+            <p class="small muted">Cycles: Full Garage Lift → 2-Min Floor / Hill Ruck → Rest / Missed</p>
+          </div>
+
+          <div id="week-grid" class="week-grid"></div>
+          <div id="tracker-status" class="status-banner"></div>
+
+          <div class="legend-row">
+            <span class="legend-item"><span class="legend-dot" style="background:var(--success, var(--fb-success));"></span>Full Lift</span>
+            <span class="legend-item"><span class="legend-dot" style="background:var(--primary, var(--fb-primary));"></span>2-Min / Hill Ruck</span>
+            <span class="legend-item"><span class="legend-dot" style="background:var(--muted-foreground, var(--fb-muted));"></span>Rest / Missed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // ---------- 1. Identity Rings ----------
+    const layers = {
+      identity: {
+        title: "Identity: Who You Are Becoming",
+        badge: "Strongest Driver",
+        badgeClass: "badge",
+        oldMindset: "“I should try to lift weights more often.”",
+        newMindset: "“I’m someone who trains for strength and welcomes physical challenge—whether in the garage or up the hill.”",
+        why: "When the garage is chilly and you're comfortable upstairs, outcome goals (“get stronger someday”) easily lose to immediate comfort. Identity acts in the moment: every single set—even a 5-minute floor session—is a vote proving who you are."
+      },
+      processes: {
+        title: "Processes: Your Systems & Environment",
+        badge: "Where Friction Lives",
+        badgeClass: "badge badge-chart2",
+        oldMindset: "Relying on random motivation to walk downstairs into a cold garage and figure out a workout.",
+        newMindset: "Triggering the garage heater before the dog walk, walking straight into the gym while already warm and in shoes, and following a 3-lift board.",
+        why: "You do not rise to the level of your goals; you fall to the level of your systems. Redesigning the house-to-garage pathway beats trying to summon more willpower."
+      },
+      outcomes: {
+        title: "Outcomes: The Lagging Results",
+        badge: "Lagging Indicator",
+        badgeClass: "badge badge-chart3",
+        oldMindset: "Checking for visible muscle or big PRs after two weeks and getting discouraged.",
+        newMindset: "Treating strength, muscle mass, and uphill stamina as the inevitable side-effect of logging 100+ votes over months.",
+        why: "Outcomes are great for setting direction (stronger legs, upper body, resilient joints), but poor for daily fuel because muscle adapts slowly."
+      }
+    };
+
+    function selectLayer(key) {
+      const data = layers[key];
+      document.getElementById("layer-panel").innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <h3>${data.title}</h3>
+          <span class="${data.badgeClass}">${data.badge}</span>
+        </div>
+        <div class="grid-2" style="gap:10px;">
+          <div class="inner-box">
+            <div class="small muted semi" style="margin-bottom:4px;">Instead of…</div>
+            <div class="small">${data.oldMindset}</div>
+          </div>
+          <div class="inner-box" style="border-color: var(--primary, var(--fb-primary));">
+            <div class="small text-primary semi" style="margin-bottom:4px;">Shift to…</div>
+            <div class="small semi">${data.newMindset}</div>
+          </div>
+        </div>
+        <p class="small muted">${data.why}</p>
+      `;
+
+      document.querySelectorAll("[data-layer-btn]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.layerBtn === key);
+      });
+
+      ["outcomes", "processes", "identity"].forEach(id => {
+        document.getElementById("ring-" + id).setAttribute("stroke-width", id === key ? "3.5" : "1.8");
+      });
+    }
+
+    document.querySelectorAll("[data-layer]").forEach(el => {
+      el.addEventListener("click", () => selectLayer(el.dataset.layer));
+    });
+    document.querySelectorAll("[data-layer-btn]").forEach(btn => {
+      btn.addEventListener("click", () => selectLayer(btn.dataset.layerBtn));
+    });
+    selectLayer("identity");
+
+    // ---------- 2. Home & Hill Friction Simulator ----------
+    const tweaks = [
+      {
+        id: "stack",
+        title: "Habit Stack on Dog Walk Return",
+        law: "1st Law • Obvious",
+        reduction: 24,
+        sessionsBoost: 1.3,
+        desc: "You're already downstairs, wearing shoes, and warmed up from climbing the hill. Step straight into the garage before going upstairs.",
+        active: true
+      },
+      {
+        id: "heater",
+        title: "Smart-Plug Heater Triggered at Leash",
+        law: "3rd Law • Easy",
+        reduction: 20,
+        sessionsBoost: 0.9,
+        desc: "Flip a smart plug (or timer) when grabbing the leash. By the time you return from the walk, the garage isn't chilly.",
+        active: true
+      },
+      {
+        id: "twoMin",
+        title: "2-Minute Floor + 3-Lift Whiteboard",
+        law: "3rd Law • Easy",
+        reduction: 18,
+        sessionsBoost: 0.9,
+        desc: "Pre-written 3-exercise plan waiting on the wall. The rule: do just 1 warm-up set, with full permission to stop after.",
+        active: false
+      },
+      {
+        id: "ruck",
+        title: "Weighted Pack / Vest Next to the Leash",
+        law: "Hill Asset",
+        reduction: 10,
+        sessionsBoost: 1.1,
+        desc: "Turn regular hill dog walks into automatic glute, leg, and posture strength work—zero extra time on your calendar.",
+        active: false
+      },
+      {
+        id: "upstairsCue",
+        title: "Upstairs Visual Cue / Micro-Equipment",
+        law: "1st Law • Obvious",
+        reduction: 10,
+        sessionsBoost: 0.6,
+        desc: "Keep gym shoes by the stairs (or a single kettlebell / doorway pull-up bar upstairs) so strength stays visible in your living space.",
+        active: false
+      }
+    ];
+
+    function renderTweaks() {
+      const container = document.getElementById("tweaks-container");
+      container.innerHTML = tweaks.map(t => `
+        <button data-tweak="${t.id}" class="tweak-card ${t.active ? "active" : ""}">
+          <div>
+            <div>
+              <span class="semi" style="font-size:13px;">${t.title}</span>
+              <span class="tweak-tag">${t.law}</span>
+            </div>
+            <p class="small muted" style="margin-top:4px;">${t.desc}</p>
+          </div>
+          <div class="checkbox-box">
+            ${t.active ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2L5 8.7L9.5 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
+          </div>
+        </button>
+      `).join("");
+
+      container.querySelectorAll("[data-tweak]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const item = tweaks.find(x => x.id === btn.dataset.tweak);
+          item.active = !item.active;
+          renderTweaks();
+          updateSimulation();
+        });
+      });
+    }
+
+    function updateSimulation() {
+      const isOn = id => tweaks.find(t => t.id === id).active;
+      const baseFriction = 90;
+      const totalReduction = tweaks.filter(t => t.active).reduce((s, t) => s + t.reduction, 0);
+      const friction = Math.max(8, baseFriction - totalReduction);
+
+      const sessions = +(0.5 + tweaks.filter(t => t.active).reduce((s, t) => s + t.sessionsBoost, 0)).toFixed(1);
+
+      const fBar = document.getElementById("friction-bar");
+      const fVal = document.getElementById("friction-val");
+      fBar.style.width = friction + "%";
+      fVal.textContent = friction + "%";
+
+      const fColor = friction <= 30
+        ? "var(--success, var(--fb-success))"
+        : friction <= 58
+          ? "var(--warning, var(--fb-warning))"
+          : "var(--error, var(--fb-error))";
+      fBar.style.backgroundColor = fColor;
+      fVal.style.color = fColor;
+
+      const sBar = document.getElementById("sessions-bar");
+      const sVal = document.getElementById("sessions-val");
+      const sPct = Math.min(100, Math.round((sessions / 5.3) * 100));
+      sBar.style.width = sPct + "%";
+      sVal.textContent = "~" + sessions + " / wk";
+      const sColor = sessions >= 3.5
+        ? "var(--success, var(--fb-success))"
+        : sessions >= 2
+          ? "var(--primary, var(--fb-primary))"
+          : "var(--warning, var(--fb-warning))";
+      sBar.style.backgroundColor = sColor;
+      sVal.style.color = sColor;
+
+      document.getElementById("svg-cue-upstairs").setAttribute("opacity", isOn("upstairsCue") ? "1" : "0.2");
+      document.getElementById("svg-garage-plan").setAttribute("opacity", isOn("twoMin") ? "1" : "0.2");
+      document.getElementById("svg-ruck").setAttribute("opacity", isOn("ruck") ? "1" : "0.2");
+
+      const heaterOn = isOn("heater");
+      document.getElementById("svg-heater").setAttribute("opacity", heaterOn ? "1" : "0.18");
+      const garageBg = document.getElementById("svg-garage-bg");
+      const garageTemp = document.getElementById("svg-garage-temp");
+      if (heaterOn) {
+        garageBg.setAttribute("fill", "var(--warning, var(--fb-warning))");
+        garageBg.setAttribute("fill-opacity", "0.14");
+        garageBg.setAttribute("stroke", "var(--warning, var(--fb-warning))");
+        garageTemp.setAttribute("fill", "var(--warning, var(--fb-warning))");
+        garageTemp.textContent = "Pre-Warmed (Inviting)";
+      } else {
+        garageBg.setAttribute("fill", "var(--chart-1, var(--fb-chart1))");
+        garageBg.setAttribute("fill-opacity", "0.14");
+        garageBg.setAttribute("stroke", "var(--chart-1, var(--fb-chart1))");
+        garageTemp.setAttribute("fill", "var(--chart-1, var(--fb-chart1))");
+        garageTemp.textContent = "Chilly (High Friction)";
+      }
+
+      const stackOn = isOn("stack");
+      document.getElementById("svg-stack-path").setAttribute("opacity", stackOn ? "1" : "0.18");
+      document.getElementById("svg-stack-label").setAttribute("opacity", stackOn ? "1" : "0.2");
+      document.getElementById("svg-hard-path").setAttribute("opacity", stackOn ? "0.2" : "0.9");
+      document.getElementById("svg-hard-label").setAttribute("opacity", stackOn ? "0.2" : "0.95");
+
+      const summary = document.getElementById("sim-summary");
+      if (friction >= 70) {
+        summary.innerHTML = `<strong class="text-error">High Activation Barrier:</strong> Lifting currently competes directly with staying cozy upstairs. Going downstairs cold—and deciding what to do once you're there—makes skipping the default choice.`;
+      } else if (friction >= 35) {
+        summary.innerHTML = `<strong class="text-warning">Much Smoother Entry:</strong> You've removed key barriers (like cold starts or upstairs inertia). Adding a 2-minute floor or hill rucking will make challenging your muscles nearly automatic.`;
+      } else {
+        summary.innerHTML = `<strong class="text-success">Low-Friction Strength System:</strong> Dog walks automatically warm you up and deliver you to a pre-warmed garage with a clear 2-minute entry point, while weighted hill walks keep challenging your muscles even on non-lifting days.`;
+      }
+    }
+
+    document.getElementById("btn-reset-tweaks").addEventListener("click", () => {
+      tweaks.forEach(t => t.active = false);
+      renderTweaks();
+      updateSimulation();
+    });
+    document.getElementById("btn-all-tweaks").addEventListener("click", () => {
+      tweaks.forEach(t => t.active = true);
+      renderTweaks();
+      updateSimulation();
+    });
+
+    renderTweaks();
+    updateSimulation();
+
+    // ---------- 3. The Four Laws ----------
+    const laws = [
+      {
+        id: "obvious",
+        step: "1. Cue",
+        law: "Make It Obvious",
+        color: "var(--chart-1, var(--fb-chart1))",
+        principle: "Habits don't fire on willpower; they fire on reliable cues in time, place, and environment.",
+        barrier: "Your weights live downstairs out of sight. Upstairs, nothing visually reminds you to train, and 'later today' rarely happens.",
+        tactics: [
+          "Implementation Intention: “On Mon/Wed/Fri, right after our afternoon dog walk, I step straight into the garage.”",
+          "Dog-Walk Stack: Pair the garage session directly to unclipping the leash—you're already downstairs and moving.",
+          "Visual Triggers: Hang a weighted vest or ruck pack right beside the dog leash, and place lifting shoes by the stairs."
+        ]
+      },
+      {
+        id: "attractive",
+        step: "2. Craving",
+        law: "Make It Attractive",
+        color: "var(--chart-2, var(--fb-chart2))",
+        principle: "We anticipate and repeat behaviors paired with pleasant feelings, comfort, or enjoyment.",
+        barrier: "A chilly garage creates immediate physical dread before you even touch a barbell or dumbbell.",
+        tactics: [
+          "Pre-Warm the Room: Trigger a smart plug + safe space heater from your phone 15 minutes before (or right as you start the walk).",
+          "Temptation Bundling: Reserve your best podcast, audiobook, or playlist exclusively for garage lifts and hill rucks.",
+          "Comfort Gear: Keep a dedicated warm-up hoodie, beanie, and grippy gloves right inside the garage door so the first 3 minutes feel cozy."
+        ]
+      },
+      {
+        id: "easy",
+        step: "3. Response",
+        law: "Make It Easy",
+        color: "var(--chart-3, var(--fb-chart3))",
+        principle: "Reduce friction so starting takes almost zero activation energy. Standardize showing up before optimizing volume.",
+        barrier: "Walking downstairs, warming up from cold, and deciding what exercises to do stacks 4–5 small hurdles into one big 'not today.'",
+        tactics: [
+          "The Two-Minute Rule: Commit only to stepping into the garage and doing 1 warm-up set, with full permission to stop after.",
+          "Pre-Written 3-Move Plan: Write an A/B workout on a garage whiteboard (A: Squat, Press, Row; B: Hinge, Push-up/Bench, Pull-up) for zero decision fatigue.",
+          "Use the Hill Automatically: On busy days, putting a 15–20 lb pack on for the regular dog walk challenges legs and core with zero schedule friction."
+        ]
+      },
+      {
+        id: "satisfying",
+        step: "4. Reward",
+        law: "Make It Satisfying",
+        color: "var(--chart-4, var(--fb-chart4))",
+        principle: "What is immediately rewarded is repeated. Because muscle grows slowly, you need instant proof of progress today.",
+        barrier: "After a single session, your muscles feel tired and look identical—so your brain doesn't get a fast payoff.",
+        tactics: [
+          "Garage Whiteboard / App Log: Write down weight × reps every session. Adding +1 rep or +2.5–5 lbs gives an immediate win today.",
+          "Visual Streak Calendar: Mark an 'X' on a wall calendar for every garage lift or weighted hill walk.",
+          "Never Miss Twice: Missing one planned day is normal life; doing even a 5-minute floor session next time protects your streak and identity."
+        ]
+      }
+    ];
+
+    let activeLaw = "obvious";
+
+    function renderLaws() {
+      const tabsEl = document.getElementById("law-tabs");
+      tabsEl.innerHTML = laws.map(l => {
+        const selected = l.id === activeLaw;
+        return `
+          <button data-law="${l.id}" class="law-tab ${selected ? "active" : ""}">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="small mono bold" style="color:${l.color};">${l.step}</span>
+              ${selected ? '<span style="width:8px; height:8px; border-radius:50%; background:var(--primary, var(--fb-primary));"></span>' : ''}
+            </div>
+            <div class="semi" style="margin-top:4px; font-size:14px;">${l.law}</div>
+          </button>
+        `;
+      }).join("");
+
+      tabsEl.querySelectorAll("[data-law]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeLaw = btn.dataset.law;
+          renderLaws();
+        });
+      });
+
+      const current = laws.find(l => l.id === activeLaw);
+      document.getElementById("law-detail").innerHTML = `
+        <div class="grid-12">
+          <div class="col-5 stack-sm">
+            <div>
+              <div class="small bold" style="color:${current.color}; text-transform:uppercase; letter-spacing:0.04em;">${current.step} → ${current.law}</div>
+              <p class="semi" style="margin-top:4px;">${current.principle}</p>
+            </div>
+            <div class="inner-box">
+              <div class="small bold text-warning" style="margin-bottom:4px;">Your Current Friction Point</div>
+              <p class="small muted">${current.barrier}</p>
+            </div>
+          </div>
+          <div class="col-7 inner-box stack-sm">
+            <div class="small bold text-success">Concrete Tactics for Your Home &amp; Hill</div>
+            <ul class="clean-list">
+              ${current.tactics.map(item => `
+                <li>
+                  <span class="bullet-dot" style="background-color:${current.color};"></span>
+                  <span>${item}</span>
+                </li>
+              `).join("")}
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+    renderLaws();
+
+    // ---------- 4. Goldilocks Rule ----------
+    const goldSlider = document.getElementById("gold-slider");
+    const goldY = t => 136 - 94 * Math.exp(-Math.pow((t - 0.5) / 0.24, 2));
+
+    (() => {
+      const pts = [];
+      for (let i = 0; i <= 60; i++) {
+        const t = i / 60;
+        pts.push(`${i === 0 ? "M" : "L"} ${(25 + t * 370).toFixed(1)} ${goldY(t).toFixed(1)}`);
+      }
+      document.getElementById("gold-curve").setAttribute("d", pts.join(" "));
+    })();
+
+    function updateGoldilocks(val) {
+      const t = val / 100;
+      const x = 25 + t * 370;
+      const y = goldY(t);
+
+      const dot = document.getElementById("gold-dot");
+      const guide = document.getElementById("gold-guide");
+      const label = document.getElementById("gold-label");
+      const fb = document.getElementById("gold-feedback");
+
+      dot.setAttribute("cx", x.toFixed(1));
+      dot.setAttribute("cy", y.toFixed(1));
+      guide.setAttribute("x1", x.toFixed(1));
+      guide.setAttribute("x2", x.toFixed(1));
+      guide.setAttribute("y1", y.toFixed(1));
+
+      if (val < 33) {
+        dot.setAttribute("fill", "var(--muted-foreground, var(--fb-muted))");
+        label.textContent = "Too Easy (Boredom Zone)";
+        label.style.color = "var(--muted-foreground, var(--fb-muted))";
+        fb.innerHTML = `
+          <div class="semi">Under-Challenged: Comfort Without Adaptation</div>
+          <p class="small muted">Sets end with 5+ reps left in the tank, or dog walks stay at a casual stroll. Easy to repeat, but muscles get little signal to adapt.</p>
+          <div class="small semi text-primary">Fix: Add 1–2 reps per set, slow the lowering phase to 3 seconds, or wear a 10–15 lb backpack up the hill.</div>
+        `;
+      } else if (val <= 68) {
+        dot.setAttribute("fill", "var(--success, var(--fb-success))");
+        label.textContent = "Goldilocks Edge (+1–4% / 1–3 RIR)";
+        label.style.color = "var(--success, var(--fb-success))";
+        fb.innerHTML = `
+          <div class="semi text-success">Sweet Spot: Maximum Adaptation + Sustainable Motivation</div>
+          <p class="small muted">The final 2–3 reps visibly slow down and demand focus, leaving 1–3 reps in reserve. You finish feeling proud and capable—not wrecked.</p>
+          <div class="small"><strong>In practice:</strong> Beat last week's garage log by 1 rep or 2.5–5 lbs, and push a brisk pace or moderate ruck weight up your hill.</div>
+        `;
+      } else {
+        dot.setAttribute("fill", "var(--error, var(--fb-error))");
+        label.textContent = "Too Hard (Dread & Burnout Zone)";
+        label.style.color = "var(--error, var(--fb-error))";
+        fb.innerHTML = `
+          <div class="semi text-error">Over-Reaching: Dread Kills the Habit</div>
+          <p class="small muted">Grinding every set to failure or doing brutal 75-minute garage marathons leaves you sore and dreading the stairs next time.</p>
+          <div class="small semi text-primary">Fix: Trim to 2–3 hard working sets per lift, keep sessions to 25–35 minutes, and leave 1–2 crisp reps in the tank so you want to return.</div>
+        `;
+      }
+    }
+
+    goldSlider.addEventListener("input", e => updateGoldilocks(+e.target.value));
+    updateGoldilocks(52);
+
+    // ---------- 5. Plateau of Latent Potential ----------
+    const weekSlider = document.getElementById("week-slider");
+    const expY = t => 140 - t * 118;
+    const actY = t => 140 - 130 * Math.pow(t, 2.35);
+
+    (() => {
+      const curvePts = [];
+      const valleyTop = [];
+      const valleyBottom = [];
+      for (let i = 0; i <= 60; i++) {
+        const t = i / 60;
+        const x = 35 + t * 355;
+        const ya = actY(t);
+        const ye = expY(t);
+        curvePts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${ya.toFixed(1)}`);
+        if (ya >= ye) {
+          valleyTop.push(`${x.toFixed(1)} ${ye.toFixed(1)}`);
+          valleyBottom.unshift(`${x.toFixed(1)} ${ya.toFixed(1)}`);
+        }
+      }
+      document.getElementById("actual-curve").setAttribute("d", curvePts.join(" "));
+      if (valleyTop.length > 1) {
+        const d = `M ${valleyTop[0]} ` + valleyTop.slice(1).map(p => `L ${p}`).join(" ") + " " + valleyBottom.map(p => `L ${p}`).join(" ") + " Z";
+        document.getElementById("valley-fill").setAttribute("d", d);
+      }
+    })();
+
+    function updateWeek(week) {
+      const t = (week - 1) / 15;
+      const x = 35 + t * 355;
+      const yExp = expY(t);
+      const yAct = actY(t);
+
+      document.getElementById("week-line").setAttribute("x1", x.toFixed(1));
+      document.getElementById("week-line").setAttribute("x2", x.toFixed(1));
+      document.getElementById("week-dot-exp").setAttribute("cx", x.toFixed(1));
+      document.getElementById("week-dot-exp").setAttribute("cy", yExp.toFixed(1));
+      document.getElementById("week-dot-act").setAttribute("cx", x.toFixed(1));
+      document.getElementById("week-dot-act").setAttribute("cy", yAct.toFixed(1));
+      document.getElementById("week-label").textContent = "Week " + week;
+
+      const fb = document.getElementById("week-feedback");
+      if (week <= 5) {
+        fb.innerHTML = `
+          <div class="semi text-warning">Weeks 1–5: The Valley of Disappointment</div>
+          <p class="small muted">Your nervous system is learning movements and your habit loop is wiring in, while mirror changes lag behind. Most people quit here thinking “it’s not working.”</p>
+          <div class="small"><strong>Bridge the gap:</strong> Celebrate <em>process wins</em>—streaks on the calendar, +1 rep on the whiteboard, and stepping into the garage after dog walks.</div>
+        `;
+      } else if (week <= 10) {
+        fb.innerHTML = `
+          <div class="semi text-primary">Weeks 6–10: Crossing the Threshold</div>
+          <p class="small muted">The garage routine feels automatic. Weights that felt heavy in Week 1 are now your warm-up, and the neighborhood hill feels noticeably flatter on walks.</p>
+          <div class="small"><strong>Keep compounding:</strong> Nudge weights up by 2.5–5 lbs or add a slight load to your hill ruck pack to stay in the Goldilocks Zone.</div>
+        `;
+      } else {
+        fb.innerHTML = `
+          <div class="semi text-success">Weeks 11–16: Visible Compounding</div>
+          <p class="small muted">Stored potential becomes unmistakable—noticeable strength, posture, and an entrenched identity. Skipping now feels stranger than showing up.</p>
+          <div class="small"><strong>Next level:</strong> Review your logbook every 6–8 weeks and swap in one fresh exercise variation to keep training engaging.</div>
+        `;
+      }
+    }
+
+    weekSlider.addEventListener("input", e => updateWeek(+e.target.value));
+    updateWeek(4);
+
+    // ---------- 6. Interactive "Never Miss Twice" Tracker ----------
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const dayStates = [2, 1, 2, 0, 2, 1, 0];
+
+    function renderTracker() {
+      const grid = document.getElementById("week-grid");
+      grid.innerHTML = days.map((d, i) => {
+        const st = dayStates[i];
+        const cls = st === 2 ? "state-2" : st === 1 ? "state-1" : "";
+        const icon = st === 2 ? "Lift" : st === 1 ? "Ruck" : "—";
+        const label = st === 2 ? "Full" : st === 1 ? "2m/Hill" : "Rest";
+        return `
+          <button data-day="${i}" class="day-btn ${cls}">
+            <div class="small semi">${d}</div>
+            <div class="small mono bold" style="margin-top:4px;">${icon}</div>
+            <div class="small" style="opacity:0.85; margin-top:2px;">${label}</div>
+          </button>
+        `;
+      }).join("");
+
+      grid.querySelectorAll("[data-day]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const idx = +btn.dataset.day;
+          dayStates[idx] = (dayStates[idx] + 1) % 3;
+          renderTracker();
+        });
+      });
+
+      const fullCount = dayStates.filter(s => s === 2).length;
+      const miniCount = dayStates.filter(s => s === 1).length;
+      const activeCount = fullCount + miniCount;
+
+      let maxMiss = 0, curMiss = 0;
+      dayStates.forEach(s => {
+        if (s === 0) { curMiss++; maxMiss = Math.max(maxMiss, curMiss); }
+        else curMiss = 0;
+      });
+
+      const status = document.getElementById("tracker-status");
+      if (activeCount === 0) {
+        status.className = "status-banner status-error";
+        status.innerHTML = `<strong>Zero Votes Cast:</strong> Don't wait for Monday. Pick <em>one</em> day and trigger the 2-Minute Rule right after your next dog walk.`;
+      } else if (maxMiss >= 3) {
+        status.className = "status-banner status-warning";
+        status.innerHTML = `<strong>Watch the Gap (${maxMiss} quiet days in a row):</strong> You logged ${fullCount} garage lifts and ${miniCount} mini/hill sessions. Drop a 2-minute floor or weighted hill walk in the middle to apply <em>Never Miss Twice</em>.`;
+      } else if (fullCount >= 2 && activeCount >= 4) {
+        status.className = "status-banner status-success";
+        status.innerHTML = `<strong>Strong Atomic Week (${fullCount} Garage Lifts + ${miniCount} Hill/2-Min Votes):</strong> Balanced recovery, zero long gaps, and consistent progressive overload. Identity reinforced!`;
+      } else {
+        status.className = "status-banner status-primary";
+        status.innerHTML = `<strong>Momentum Alive (${fullCount} Garage Lifts + ${miniCount} Hill/2-Min Votes):</strong> Even lighter weeks protect your identity. Try stacking 2–3 planned garage lifts onto your regular dog walk returns.`;
+      }
+    }
+
+    renderTracker();
+  </script>
+</body>
+</html>
