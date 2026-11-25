@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atomic Habits × Kelly Starrett — Longevity Strength Blueprint</title>
+  <title>Atomic Habits × Kelly Starrett — Environment &amp; Mindset Blueprint</title>
   <style>
     /* Fallback palette for standalone browsers & GitHub Pages.
        Host tokens (--background, --card, etc.) are never overwritten on :root so Antigravity theming works seamlessly. */
@@ -145,6 +145,10 @@
       background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 14%, transparent);
       color: var(--primary, var(--fb-primary));
     }
+    .badge-chart2 {
+      background-color: color-mix(in srgb, var(--chart-2, var(--fb-chart2)) 15%, transparent);
+      color: var(--chart-2, var(--fb-chart2));
+    }
     .badge-success {
       background-color: color-mix(in srgb, var(--success, var(--fb-success)) 15%, transparent);
       color: var(--success, var(--fb-success));
@@ -153,39 +157,25 @@
       background-color: color-mix(in srgb, var(--warning, var(--fb-warning)) 16%, transparent);
       color: var(--warning, var(--fb-warning));
     }
-    .badge-error {
-      background-color: color-mix(in srgb, var(--error, var(--fb-error)) 15%, transparent);
-      color: var(--error, var(--fb-error));
-    }
-    .badge-chart2 {
-      background-color: color-mix(in srgb, var(--chart-2, var(--fb-chart2)) 15%, transparent);
-      color: var(--chart-2, var(--fb-chart2));
-    }
-    .badge-chart3 {
-      background-color: color-mix(in srgb, var(--chart-3, var(--fb-chart3)) 15%, transparent);
-      color: var(--chart-3, var(--fb-chart3));
-    }
 
     /* Layout helpers */
-    .stack-gap { display: flex; flex-direction: column; gap: 14px; }
-    .stack-sm  { display: flex; flex-direction: column; gap: 8px; }
-    .row-wrap  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .stack-gap   { display: flex; flex-direction: column; gap: 14px; }
+    .stack-sm    { display: flex; flex-direction: column; gap: 8px; }
+    .row-wrap    { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
     .row-between { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
 
-    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-    .grid-6 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .grid-2  { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .grid-3  { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .grid-4  { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
     .grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; align-items: start; }
-    .col-5 { grid-column: span 5; }
-    .col-6 { grid-column: span 6; }
-    .col-7 { grid-column: span 7; }
+    .col-5   { grid-column: span 5; }
+    .col-7   { grid-column: span 7; }
 
     .week-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
 
     @media (max-width: 900px) {
-      .grid-2, .grid-3, .grid-6, .grid-12 { grid-template-columns: 1fr; }
-      .col-5, .col-6, .col-7 { grid-column: span 1; }
+      .grid-2, .grid-3, .grid-12 { grid-template-columns: 1fr; }
+      .col-5, .col-7 { grid-column: span 1; }
       .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 540px) {
@@ -203,7 +193,7 @@
     .header-copy { flex: 1 1 440px; }
     .stat-row {
       display: grid;
-      grid-template-columns: repeat(2, minmax(135px, 1fr));
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
       gap: 8px;
     }
     .stat-box {
@@ -255,20 +245,28 @@
       background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 14%, transparent);
       color: var(--primary, var(--fb-primary));
     }
-    .pill.active-green {
-      border-color: var(--success, var(--fb-success));
-      background-color: color-mix(in srgb, var(--success, var(--fb-success)) 15%, transparent);
-      color: var(--success, var(--fb-success));
-    }
-    .pill.active-yellow {
-      border-color: var(--warning, var(--fb-warning));
-      background-color: color-mix(in srgb, var(--warning, var(--fb-warning)) 16%, transparent);
-      color: var(--warning, var(--fb-warning));
-    }
     .pill.active-red {
       border-color: var(--error, var(--fb-error));
-      background-color: color-mix(in srgb, var(--error, var(--fb-error)) 15%, transparent);
+      background-color: color-mix(in srgb, var(--error, var(--fb-error)) 14%, transparent);
       color: var(--error, var(--fb-error));
+    }
+
+    /* Reframe flip cards */
+    .reframe-card {
+      text-align: left;
+      background-color: var(--content, var(--fb-content));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.18s ease, background-color 0.18s ease;
+    }
+    .reframe-card:hover { border-color: var(--border, var(--fb-border)); }
+    .reframe-card.flipped {
+      border-color: var(--success, var(--fb-success));
+      background-color: color-mix(in srgb, var(--success, var(--fb-success)) 10%, transparent);
     }
 
     /* Tweak cards */
@@ -320,17 +318,17 @@
       color: var(--primary-foreground, var(--fb-primary-fg));
     }
 
-    /* Trigger cards */
-    .trigger-tab {
+    /* Tabs (Laws & Triggers) */
+    .select-tab {
       text-align: left;
-      padding: 11px 13px;
+      padding: 12px 13px;
       border-radius: 11px;
       border: 1px solid var(--card-border, var(--fb-card-border));
       background-color: var(--content, var(--fb-content));
       transition: border-color 0.15s ease, background-color 0.15s ease;
     }
-    .trigger-tab:hover { border-color: var(--border, var(--fb-border)); }
-    .trigger-tab.active {
+    .select-tab:hover { border-color: var(--border, var(--fb-border)); }
+    .select-tab.active {
       border-color: var(--primary, var(--fb-primary));
       background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 12%, transparent);
     }
@@ -359,27 +357,8 @@
       transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
     }
 
-    /* Longevity 6 pillar cards */
-    .pillar-card {
-      background-color: var(--content, var(--fb-content));
-      border: 1px solid var(--card-border, var(--fb-card-border));
-      border-radius: 12px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .pillar-equip {
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 7px;
-      background-color: var(--card, var(--fb-card));
-      border: 1px solid var(--card-border, var(--fb-card-border));
-      color: var(--muted-foreground, var(--fb-muted));
-    }
-
     /* Lists */
-    ul.clean-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+    ul.clean-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
     ul.clean-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; }
     .bullet-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
 
@@ -465,111 +444,120 @@
         <div class="header-copy">
           <div class="row-wrap">
             <span class="badge">Atomic Habits × Kelly Starrett</span>
-            <span class="badge badge-chart2">Longevity-First System</span>
-            <button id="theme-toggle" class="btn" style="padding:4px 10px;" title="Toggle Light/Dark theme in standalone browser">Switch Theme</button>
+            <span class="badge badge-chart2">Environment &amp; Mental Reframing</span>
+            <button id="theme-toggle" class="btn" style="padding:4px 10px;" title="Toggle Light/Dark theme">Switch Theme</button>
           </div>
-          <h1>Distributed Strength &amp; Movement Blueprint</h1>
+          <h1>Designing a Life Where Movement Happens Automatically</h1>
           <p class="muted">
-            Combining James Clear’s habit engineering with Kelly Starrett’s <em>Built to Move</em> philosophy:
-            weave strength, joint health, and loading across your real upstairs life, hill dog walks, and open garage windows—without fighting irregular schedules, downstairs guest noise, or draining energy.
+            Before deciding <em>what</em> exercises to program, solve <em>why</em> starting feels hard.
+            This blueprint focuses strictly on <strong>environment design, friction removal, event triggers, and mental reframing</strong>—blending James Clear’s habit loop with Kelly Starrett’s distributed movement philosophy.
           </p>
         </div>
         <div class="stat-row">
           <div class="stat-box">
-            <div class="small muted">Primary Engine (80%)</div>
-            <div class="stat-val text-chart2">Upstairs + Hill</div>
+            <div class="small muted">Core Principle</div>
+            <div class="stat-val text-chart2">Distribute, Don't Cram</div>
           </div>
           <div class="stat-box">
-            <div class="small muted">Heavy Bonus (20%)</div>
-            <div class="stat-val text-primary">Open Garage Windows</div>
+            <div class="small muted">Primary Lever</div>
+            <div class="stat-val text-primary">Environment &gt; Willpower</div>
           </div>
           <div class="stat-box">
-            <div class="small muted">Trigger Style</div>
+            <div class="small muted">Schedule Style</div>
             <div class="stat-val text-success">Events (Not Clocks)</div>
           </div>
           <div class="stat-box">
-            <div class="small muted">Partner Mode</div>
-            <div class="stat-val text-warning">Joint-Safe Tiers</div>
+            <div class="small muted">North Star</div>
+            <div class="stat-val text-warning">Longevity Over Decades</div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Section 1: Kelly Starrett × Atomic Habits Paradigm Shift -->
+    <!-- Section 1: Mental Reframing Flip Cards -->
     <section class="card stack-gap">
       <div class="row-between">
         <div>
-          <h2>1. The Core Shift: "Workout Box" vs. Distributed Movement Nutrition</h2>
+          <h2>1. Six Mental Reframes (Remove the Invisible Brakes)</h2>
           <p class="muted">
-            Kelly Starrett’s rule: 1 hour of gym effort doesn’t undo 23 sedentary hours—and waiting for a perfect 45-minute garage window means most days become zeros. Toggle between the two models below.
+            Most skipped sessions aren’t a motivation failure—they’re hidden mental scripts creating guilt or resistance before you even stand up. Click any card to flip from the old friction script to the new frame.
+          </p>
+        </div>
+        <div class="row-wrap">
+          <button id="reframe-all-old" class="btn">Show Old Scripts</button>
+          <button id="reframe-all-new" class="btn btn-primary">Reframe All</button>
+        </div>
+      </div>
+
+      <div class="grid-3" id="reframe-grid"></div>
+    </section>
+
+    <!-- Section 2: Kelly Starrett × Atomic Habits 24-Hour Shift -->
+    <section class="card stack-gap">
+      <div class="row-between">
+        <div>
+          <h2>2. The Paradigm Shift: "Workout Box" vs. Distributed Movement</h2>
+          <p class="muted">
+            Kelly Starrett’s <em>Built to Move</em> principle: physical challenge works like daily nutrition, not an isolated 1-hour appointment surrounded by 23 sedentary hours. Toggle between the two mental models.
           </p>
         </div>
         <div class="row-wrap">
           <button id="mode-box" class="pill">Old: All-or-Nothing Garage Box</button>
-          <button id="mode-dist" class="pill active">New: Distributed Day (Starrett × Clear)</button>
+          <button id="mode-dist" class="pill active">New: Distributed Across the Day</button>
         </div>
       </div>
 
       <div class="subpanel stack-gap">
-        <!-- 24-Hour Visual Day Timeline SVG -->
-        <svg viewBox="0 0 760 132" style="width:100%; height:auto; display:block;" role="img" aria-label="24-hour movement distribution timeline">
-          <!-- Baseline bar -->
+        <svg viewBox="0 0 760 132" style="width:100%; height:auto; display:block;" role="img" aria-label="24-hour movement distribution diagram">
           <rect x="20" y="54" width="720" height="30" rx="8"
             fill="var(--card, var(--fb-card))" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
 
-          <!-- Time labels -->
           <text x="20" y="106" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Wake</text>
-          <text x="175" y="106" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Morning WFH</text>
-          <text x="355" y="106" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Midday / Lunch</text>
+          <text x="175" y="106" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Morning Desk</text>
+          <text x="355" y="106" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Midday</text>
           <text x="540" y="106" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Late Afternoon</text>
           <text x="740" y="106" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="11">Evening / Laptop</text>
 
-          <!-- Old Box Mode Overlay -->
+          <!-- Old Box Mode -->
           <g id="timeline-box" opacity="0" class="svg-smooth">
-            <rect x="22" y="56" width="510" height="26" rx="6" fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.16" />
-            <text x="275" y="73" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11" font-weight="600">Sitting at Desk / Laptop • Waiting for "Workout Time"</text>
+            <rect x="22" y="56" width="504" height="26" rx="6" fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.16" />
+            <text x="274" y="73" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="11" font-weight="600">Continuous Sitting • Waiting for a Dedicated "Workout Slot"</text>
 
-            <rect x="538" y="50" width="94" height="38" rx="7"
+            <rect x="534" y="49" width="102" height="40" rx="7"
               fill="var(--error, var(--fb-error))" fill-opacity="0.18"
               stroke="var(--error, var(--fb-error))" stroke-width="2" stroke-dasharray="4 3" />
-            <text x="585" y="42" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="11" font-weight="700">High-Friction Cliff</text>
+            <text x="585" y="41" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="11" font-weight="700">Willpower Cliff</text>
             <text x="585" y="73" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="10.5" font-weight="700">Cold Garage?</text>
 
-            <rect x="638" y="56" width="100" height="26" rx="6" fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.16" />
-            <text x="688" y="73" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Skipped → Guilt</text>
+            <rect x="642" y="56" width="96" height="26" rx="6" fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.16" />
+            <text x="690" y="73" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Skipped → Guilt</text>
           </g>
 
-          <!-- Distributed Mode Overlay -->
+          <!-- Distributed Mode -->
           <g id="timeline-dist" opacity="1" class="svg-smooth">
-            <!-- Morning hang + dog walk -->
-            <rect x="34" y="52" width="54" height="34" rx="6" fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.22" stroke="var(--chart-2, var(--fb-chart2))" stroke-width="1.5" />
-            <text x="61" y="43" text-anchor="middle" fill="var(--chart-2, var(--fb-chart2))" font-size="10" font-weight="700">20s Hang</text>
-            <text x="61" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Door Bar</text>
+            <rect x="34" y="52" width="66" height="34" rx="6" fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.22" stroke="var(--chart-2, var(--fb-chart2))" stroke-width="1.5" />
+            <text x="67" y="42" text-anchor="middle" fill="var(--chart-2, var(--fb-chart2))" font-size="10" font-weight="700">Morning Cue</text>
+            <text x="67" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Micro-Dose</text>
 
-            <!-- WFH transition 1 -->
-            <rect x="132" y="52" width="70" height="34" rx="6" fill="var(--primary, var(--fb-primary))" fill-opacity="0.20" stroke="var(--primary, var(--fb-primary))" stroke-width="1.5" />
-            <text x="167" y="43" text-anchor="middle" fill="var(--primary, var(--fb-primary))" font-size="10" font-weight="700">Call Break</text>
-            <text x="167" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">8 KB Squats</text>
+            <rect x="136" y="52" width="84" height="34" rx="6" fill="var(--primary, var(--fb-primary))" fill-opacity="0.20" stroke="var(--primary, var(--fb-primary))" stroke-width="1.5" />
+            <text x="178" y="42" text-anchor="middle" fill="var(--primary, var(--fb-primary))" font-size="10" font-weight="700">Desk Transition</text>
+            <text x="178" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">2-Min Break</text>
 
-            <!-- Hill walk sniff breaks -->
-            <rect x="255" y="52" width="96" height="34" rx="6" fill="var(--success, var(--fb-success))" fill-opacity="0.22" stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
-            <text x="303" y="43" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="10" font-weight="700">Hill Dog Walk</text>
-            <text x="303" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Sniff-Break Reps</text>
+            <rect x="262" y="52" width="96" height="34" rx="6" fill="var(--success, var(--fb-success))" fill-opacity="0.22" stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
+            <text x="310" y="42" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="10" font-weight="700">Hill Dog Walk</text>
+            <text x="310" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Pause Triggers</text>
 
-            <!-- Midday open garage or upstairs pull -->
-            <rect x="405" y="52" width="96" height="34" rx="6" fill="var(--chart-3, var(--fb-chart3))" fill-opacity="0.22" stroke="var(--chart-3, var(--fb-chart3))" stroke-width="1.5" />
-            <text x="453" y="43" text-anchor="middle" fill="var(--chart-3, var(--fb-chart3))" font-size="10" font-weight="700">Optional Bonus</text>
-            <text x="453" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Garage / Bands</text>
+            <rect x="404" y="52" width="102" height="34" rx="6" fill="var(--chart-3, var(--fb-chart3))" fill-opacity="0.20" stroke="var(--chart-3, var(--fb-chart3))" stroke-width="1.5" />
+            <text x="455" y="42" text-anchor="middle" fill="var(--chart-3, var(--fb-chart3))" font-size="10" font-weight="700">Open Window</text>
+            <text x="455" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Optional Garage</text>
 
-            <!-- Pre-dinner shared snack -->
-            <rect x="546" y="52" width="80" height="34" rx="6" fill="var(--warning, var(--fb-warning))" fill-opacity="0.22" stroke="var(--warning, var(--fb-warning))" stroke-width="1.5" />
-            <text x="586" y="43" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="10" font-weight="700">Shared Meal</text>
-            <text x="586" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">3m Together</text>
+            <rect x="546" y="52" width="82" height="34" rx="6" fill="var(--warning, var(--fb-warning))" fill-opacity="0.22" stroke="var(--warning, var(--fb-warning))" stroke-width="1.5" />
+            <text x="587" y="42" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="10" font-weight="700">Shared Meal</text>
+            <text x="587" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Couple Anchor</text>
 
-            <!-- Evening laptop floor sitting -->
             <rect x="650" y="52" width="84" height="34" rx="6" fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.22" stroke="var(--chart-2, var(--fb-chart2))" stroke-width="1.5" />
-            <text x="692" y="43" text-anchor="middle" fill="var(--chart-2, var(--fb-chart2))" font-size="10" font-weight="700">Laptop Floor</text>
-            <text x="692" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Sit-Rise + DB</text>
+            <text x="692" y="42" text-anchor="middle" fill="var(--chart-2, var(--fb-chart2))" font-size="10" font-weight="700">Active Screen</text>
+            <text x="692" y="73" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="600">Floor / Pair</text>
           </g>
         </svg>
 
@@ -577,37 +565,24 @@
       </div>
     </section>
 
-    <!-- Section 2: Event-Based Trigger Map (No Fixed Clocks!) -->
-    <section class="card stack-gap">
-      <div>
-        <h2>2. Event-Based Triggers (Built for Irregular Schedules)</h2>
-        <p class="muted">
-          Because dog walks, meals, and computer blocks shift daily, clock triggers (“7:00 AM MWF”) break down. Anchor habits to <strong>events that already happen</strong>. Click each anchor to inspect the Cue → Micro-Dose → Reward loop.
-        </p>
-      </div>
-
-      <div class="grid-3" id="trigger-tabs"></div>
-      <div id="trigger-detail" class="subpanel"></div>
-    </section>
-
-    <!-- Section 3: Real-World Friction & House Flow Simulator -->
+    <!-- Section 3: Interactive Home, Guest & Hill Environment Simulator -->
     <section class="card stack-gap">
       <div class="row-between">
         <div>
-          <h2>3. Your Real Home, Guest &amp; Hill Friction Simulator</h2>
+          <h2>3. Environment &amp; Friction Simulator (Your Real Space)</h2>
           <p class="muted">
-            Your barrier isn’t just stairs and cold—it’s downstairs guest noise/privacy, dust, wind, laptop inertia, and saving energy for dog play. Toggle interventions below to see how friction drops and usable energy rises.
+            Your real friction is a stack: laptop inertia, sneaking past downstairs guests, a chilly/dusty garage, loud/drafty doors, and wanting to save energy for dog play. Toggle environmental tweaks to watch start friction collapse.
           </p>
         </div>
         <div class="row-wrap">
           <button id="btn-reset-tweaks" class="btn">Current Friction</button>
-          <button id="btn-all-tweaks" class="btn btn-primary">Apply Full System</button>
+          <button id="btn-all-tweaks" class="btn btn-primary">Apply Full Environment</button>
         </div>
       </div>
 
       <div class="grid-12">
         <div class="col-7 subpanel">
-          <svg viewBox="0 0 600 330" style="width:100%; height:auto; display:block;" role="img" aria-label="House, downstairs guest zone, garage gym, and hill diagram">
+          <svg viewBox="0 0 600 330" style="width:100%; height:auto; display:block;" role="img" aria-label="Home, guest hallway, garage, and hill environment diagram">
             <!-- Ground & Hill -->
             <path d="M 0 274 L 340 274 Q 420 274 480 218 L 600 118 L 600 330 L 0 330 Z"
               fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.14"
@@ -624,27 +599,27 @@
             <line x1="28" y1="154" x2="328" y2="154" stroke="var(--border, var(--fb-border))" stroke-width="2" />
 
             <!-- Upstairs Living -->
-            <rect id="svg-upstairs-bg" x="36" y="54" width="284" height="92" rx="5"
-              fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.08" class="svg-smooth" />
-            <text x="48" y="73" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">UPSTAIRS (LAPTOP + LIVING)</text>
-            <text x="48" y="88" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">2×10 lb DB • Medium KB • Door Pull-Up Bar</text>
+            <rect x="36" y="54" width="284" height="92" rx="5"
+              fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.08" />
+            <text x="48" y="73" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">UPSTAIRS LIVING &amp; DESKS</text>
+            <text x="48" y="88" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Where daily life &amp; laptop time actually happen</text>
 
-            <!-- Upstairs Starrett Upgrade Badge -->
-            <g id="svg-upstairs-kit" opacity="0.2" class="svg-smooth">
-              <rect x="46" y="96" width="150" height="42" rx="6"
+            <!-- Upstairs Visible Tools Badge -->
+            <g id="svg-upstairs-tools" opacity="0.2" class="svg-smooth">
+              <rect x="46" y="96" width="144" height="42" rx="6"
                 fill="var(--success, var(--fb-success))" fill-opacity="0.16"
                 stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
-              <text x="55" y="113" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">80% Quiet Engine</text>
-              <text x="55" y="128" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">+ Slant boards &amp; bands</text>
+              <text x="55" y="113" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Visible Quiet Zone</text>
+              <text x="55" y="128" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Cues in sight, zero noise</text>
             </g>
 
-            <!-- Floor Laptop Spot Badge -->
+            <!-- Active Laptop Spot Badge -->
             <g id="svg-floor-spot" opacity="0.2" class="svg-smooth">
-              <rect x="204" y="96" width="108" height="42" rx="6"
+              <rect x="198" y="96" width="114" height="42" rx="6"
                 fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.18"
                 stroke="var(--chart-2, var(--fb-chart2))" stroke-width="1.5" />
-              <text x="213" y="113" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Floor Mat</text>
-              <text x="213" y="128" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Laptop sit-rise</text>
+              <text x="207" y="113" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Active Laptop</text>
+              <text x="207" y="128" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Floor mat / perch</text>
             </g>
 
             <!-- Downstairs Guest Hallway -->
@@ -652,75 +627,74 @@
               fill="var(--warning, var(--fb-warning))" fill-opacity="0.12"
               stroke="var(--warning, var(--fb-warning))" stroke-width="1.2" stroke-dasharray="3 3" />
             <text x="274" y="182" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="10" font-weight="700">GUEST HALL</text>
-            <text x="274" y="197" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Privacy / quiet</text>
-            <text x="274" y="210" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">mental barrier</text>
+            <text x="274" y="197" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Privacy &amp; noise</text>
+            <text x="274" y="210" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">mental friction</text>
             <g id="svg-guest-clear" opacity="0.18" class="svg-smooth">
-              <rect x="236" y="222" width="76" height="34" rx="5"
+              <rect x="235" y="222" width="78" height="34" rx="5"
                 fill="var(--card, var(--fb-card))" stroke="var(--success, var(--fb-success))" stroke-width="1.3" />
-              <text x="274" y="237" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="9.5" font-weight="700">Daytime OK</text>
-              <text x="274" y="249" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9">or Empty Gap</text>
+              <text x="274" y="237" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="9.5" font-weight="700">Clear Rules</text>
+              <text x="274" y="249" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9">Daytime / empty</text>
             </g>
 
             <!-- Garage Gym -->
             <rect id="svg-garage-bg" x="36" y="162" width="184" height="104" rx="5"
               fill="var(--chart-1, var(--fb-chart1))" fill-opacity="0.13"
               stroke="var(--chart-1, var(--fb-chart1))" stroke-width="1.5" class="svg-smooth" />
-            <text x="46" y="181" fill="var(--foreground, var(--fb-fg))" font-size="11.5" font-weight="700">GARAGE GYM (20%)</text>
+            <text x="46" y="181" fill="var(--foreground, var(--fb-fg))" font-size="11.5" font-weight="700">DOWNSTAIRS GARAGE</text>
             <text id="svg-garage-state" x="46" y="196" fill="var(--chart-1, var(--fb-chart1))" font-size="10.5" font-weight="700">Cold, dusty, door loud</text>
-            <text x="46" y="210" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Barbells, KBs 18–70, Rings, Bench</text>
+            <text x="46" y="210" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Wind &amp; passersby if door open</text>
 
             <g id="svg-garage-ready" opacity="0.2" class="svg-smooth">
               <rect x="46" y="218" width="164" height="39" rx="6"
                 fill="var(--warning, var(--fb-warning))" fill-opacity="0.16"
                 stroke="var(--warning, var(--fb-warning))" stroke-width="1.5" />
-              <text x="55" y="234" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Cozy Quiet Studio</text>
-              <text x="55" y="248" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Door shut • Stall mats • Warm</text>
+              <text x="55" y="234" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Cozy Dedicated Corner</text>
+              <text x="55" y="248" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Door shut • Warm • Clean zone</text>
             </g>
 
             <!-- Neighborhood Hill & Dog Walks -->
             <text x="454" y="162" fill="var(--foreground, var(--fb-fg))" font-size="12" font-weight="700">NEIGHBORHOOD HILL</text>
-            <text x="454" y="177" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Sniff-break dog walks</text>
+            <text x="454" y="177" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Stop-and-sniff dog walks</text>
 
             <g id="svg-sniff-cue" opacity="0.2" class="svg-smooth">
-              <rect x="430" y="188" width="158" height="54" rx="6"
+              <rect x="432" y="188" width="156" height="48" rx="6"
                 fill="var(--primary, var(--fb-primary))" fill-opacity="0.16"
                 stroke="var(--primary, var(--fb-primary))" stroke-width="1.5" />
-              <text x="440" y="205" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Sniff-Break Cues Active</text>
-              <text x="440" y="219" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">• Curb calves / hill lunges</text>
-              <text x="440" y="232" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">• Short play sprints + pack</text>
+              <text x="442" y="206" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Walk Pause Triggers</text>
+              <text x="442" y="221" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Sniff stops &amp; hill bursts</text>
             </g>
 
-            <!-- Pressure Bypass Arrow -->
+            <!-- Pressure Bypass Banner -->
             <g id="svg-bypass" opacity="0.2" class="svg-smooth">
               <path d="M 332 104 Q 395 104 440 144" fill="none" stroke="var(--success, var(--fb-success))" stroke-width="2.5" stroke-dasharray="5 3" />
               <rect x="336" y="280" width="248" height="36" rx="7"
                 fill="var(--card, var(--fb-card))" stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
-              <text x="460" y="296" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="10.5" font-weight="700">NO GUILT ON GUEST DAYS</text>
-              <text x="460" y="309" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Upstairs + Hill still hit every longevity pillar</text>
+              <text x="460" y="296" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="10.5" font-weight="700">GARAGE BECOMES OPTIONAL BONUS</text>
+              <text x="460" y="309" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Daily life carries momentum without guest stress</text>
             </g>
           </svg>
 
           <div class="meters-grid">
             <div>
               <div class="meter-label">
-                <span class="muted semi">Daily Start Friction</span>
+                <span class="muted semi">Start Friction</span>
                 <span id="friction-val" class="mono bold">88%</span>
               </div>
               <div class="meter-track"><div id="friction-bar" class="meter-fill" style="width:88%;"></div></div>
             </div>
             <div>
               <div class="meter-label">
-                <span class="muted semi">Energy Left for Dog Play</span>
-                <span id="energy-val" class="mono bold">50%</span>
+                <span class="muted semi">Energy Preserved</span>
+                <span id="energy-val" class="mono bold">48%</span>
               </div>
-              <div class="meter-track"><div id="energy-bar" class="meter-fill" style="width:50%;"></div></div>
+              <div class="meter-track"><div id="energy-bar" class="meter-fill" style="width:48%;"></div></div>
             </div>
             <div>
               <div class="meter-label">
-                <span class="muted semi">Longevity Coverage</span>
-                <span id="coverage-val" class="mono bold">25%</span>
+                <span class="muted semi">Daily Cue Density</span>
+                <span id="cue-val" class="mono bold">20%</span>
               </div>
-              <div class="meter-track"><div id="coverage-bar" class="meter-fill" style="width:25%;"></div></div>
+              <div class="meter-track"><div id="cue-bar" class="meter-fill" style="width:20%;"></div></div>
             </div>
           </div>
 
@@ -731,78 +705,40 @@
       </div>
     </section>
 
-    <!-- Section 4: The Longevity 6 Menu (Mapped to Real Inventory!) -->
-    <section class="card stack-gap">
-      <div class="row-between">
-        <div>
-          <h2>4. The "Longevity 6" Menu (Mapped to Your Actual Gear)</h2>
-          <p class="muted">
-            Fixes decision fatigue (“which exercises actually matter?”) by compressing your equipment inventory into <strong>6 essential longevity patterns</strong>. Switch modes below—including joint-safe tiers.
-          </p>
-        </div>
-      </div>
-
-      <div class="row-wrap" id="menu-mode-pills"></div>
-      <div id="menu-mode-banner" class="status-banner"></div>
-      <div class="grid-6" id="longevity-grid"></div>
-    </section>
-
-    <!-- Section 5: Joint-Safe Discovery & Progress Loop -->
+    <!-- Section 4: The Four Laws Applied to Environment & Mindset -->
     <section class="card stack-gap">
       <div>
-        <h2>5. Make It Satisfying: Dual Reward &amp; Joint-Discovery Loop</h2>
+        <h2>4. The Four Laws of Behavior Change (Environment &amp; Psychology)</h2>
         <p class="muted">
-          Logging solves two completely different needs: <strong>instant progress feedback</strong> (even on 3-minute micro-doses) and <strong>safe pattern discovery</strong> for sensitive joints without risking flare-ups.
+          Click each stage of James Clear’s habit loop to see how it neutralizes your exact barriers—without prescribing a single workout yet.
         </p>
       </div>
 
-      <div class="grid-12">
-        <!-- Interactive Joint Check Tool -->
-        <div class="col-7 subpanel stack-gap">
-          <div>
-            <h3>Interactive Joint &amp; Energy Check (10-Second Pre-Flight)</h3>
-            <p class="small muted">Select any sensitive joint today to immediately filter for safe, flare-friendly options using your actual home equipment.</p>
-          </div>
-
-          <div class="row-wrap" id="joint-pills"></div>
-          <div id="joint-output" class="inner-box stack-sm"></div>
-        </div>
-
-        <!-- 3-Field Flare & Progress Log Template -->
-        <div class="col-5 subpanel stack-gap">
-          <div>
-            <h3>The 15-Second Notion Log Loop</h3>
-            <p class="small muted">Don’t guess what triggers joint flares—turn each micro-session into clean data over 3–4 weeks.</p>
-          </div>
-
-          <div class="inner-box stack-sm">
-            <div class="small bold text-primary">For Strength &amp; Progress Tracking</div>
-            <ul class="clean-list">
-              <li><span class="bullet-dot" style="background:var(--primary, var(--fb-primary));"></span><span><strong>1 Number Up:</strong> +1 pull-up rep, +5s dead hang, +5s KB carry, or +2.5 lb micro-plate.</span></li>
-              <li><span class="bullet-dot" style="background:var(--primary, var(--fb-primary));"></span><span><strong>Mild Good Soreness:</strong> Aim for 1–3 reps in reserve—enough stimulus to feel worked without stealing energy for dog walks.</span></li>
-            </ul>
-          </div>
-
-          <div class="inner-box stack-sm">
-            <div class="small bold text-chart2">For Joint-Safe Discovery (3 Fields Only)</div>
-            <ul class="clean-list">
-              <li><span class="bullet-dot" style="background:var(--chart-2, var(--fb-chart2));"></span><span><strong>1. What + Load:</strong> e.g., “Band row (20 lb) × 12” or “Slant-board bodyweight squat × 8”.</span></li>
-              <li><span class="bullet-dot" style="background:var(--chart-2, var(--fb-chart2));"></span><span><strong>2. During Feel:</strong> Smooth / Stiff / Pinchy (stop immediately on sharp or pinchy).</span></li>
-              <li><span class="bullet-dot" style="background:var(--chart-2, var(--fb-chart2));"></span><span><strong>3. 24-Hr Check:</strong> Green (better/normal) • Yellow (mild) • Red (flare → tag movement).</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <div class="grid-4" id="law-tabs"></div>
+      <div id="law-detail" class="subpanel"></div>
     </section>
 
-    <!-- Section 6: Goldilocks Effort + Distributed Weekly Tracker -->
+    <!-- Section 5: Event-Based Trigger Map (No Fixed Clocks!) -->
+    <section class="card stack-gap">
+      <div>
+        <h2>5. Event-Based Trigger Map (Built for Irregular Schedules)</h2>
+        <p class="muted">
+          When dog walks, meals, and deep-work blocks shift every day, clock-based habits (“7:00 AM MWF”) break immediately. Anchor cues to <strong>recurring life transitions</strong> instead.
+        </p>
+      </div>
+
+      <div class="grid-3" id="trigger-tabs"></div>
+      <div id="trigger-detail" class="subpanel"></div>
+    </section>
+
+    <!-- Section 6: Behavioral Curves (Goldilocks Edge + Plateau of Latent Potential) -->
     <section class="grid-2">
-      <!-- Goldilocks -->
+      <!-- Goldilocks Effort Mindset -->
       <div class="card stack-gap">
         <div>
-          <h2>6. Effort Dial: Protect Energy While Challenging Muscles</h2>
+          <h2>6. The Goldilocks Rule (Effort Without Burnout)</h2>
           <p class="muted">
-            Sub-maximal micro-doses ("grease the groove") build strength and leave you <em>more</em> energized for dog walks and work—unlike exhausting all-out grinds.
+            Behaviorally, the right difficulty keeps you engaged and satisfied while protecting energy for dog walks, work, and joint comfort. Drag the slider to see how effort affects habit survival.
           </p>
         </div>
 
@@ -812,9 +748,9 @@
             <rect x="145" y="14" width="130" height="126" fill="var(--success, var(--fb-success))" fill-opacity="0.13" />
             <rect x="275" y="14" width="125" height="126" fill="var(--error, var(--fb-error))" fill-opacity="0.11" />
 
-            <text x="82" y="32" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5" font-weight="700">TOO EASY</text>
-            <text x="210" y="32" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="11" font-weight="700">LONGEVITY EDGE</text>
-            <text x="337" y="32" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="10.5" font-weight="700">ENERGY DRAIN / FLARE</text>
+            <text x="82" y="32" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5" font-weight="700">BOREDOM</text>
+            <text x="210" y="32" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="11" font-weight="700">GOLDILOCKS EDGE</text>
+            <text x="337" y="32" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="10.5" font-weight="700">DREAD / DRAIN</text>
 
             <line x1="20" y1="140" x2="400" y2="140" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
             <path id="gold-curve" d="" fill="none" stroke="var(--primary, var(--fb-primary))" stroke-width="3" stroke-linecap="round" />
@@ -822,15 +758,15 @@
             <line id="gold-guide" x1="210" y1="42" x2="210" y2="140" stroke="var(--foreground, var(--fb-fg))" stroke-width="1.5" stroke-dasharray="3 3" />
             <circle id="gold-dot" cx="210" cy="42" r="6.5" fill="var(--success, var(--fb-success))" stroke="var(--card, var(--fb-card))" stroke-width="2" />
 
-            <text x="24" y="160" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">No Stimulus</text>
-            <text x="210" y="160" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">1–3 Reps in Reserve</text>
-            <text x="396" y="160" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Wrecked / Flare Risk</text>
+            <text x="24" y="160" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Too Easy</text>
+            <text x="210" y="160" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">Challenging, Not Draining</text>
+            <text x="396" y="160" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Exhausting / Flare Risk</text>
           </svg>
 
           <div>
             <div class="meter-label" style="margin-bottom:2px;">
-              <label for="gold-slider" class="muted semi">Session Intensity</label>
-              <span id="gold-label" class="semi text-success">Longevity Sweet Spot</span>
+              <label for="gold-slider" class="muted semi">Perceived Effort Level</label>
+              <span id="gold-label" class="semi text-success">Sustainable Edge</span>
             </div>
             <input id="gold-slider" type="range" min="0" max="100" value="52" />
           </div>
@@ -839,33 +775,55 @@
         <div id="gold-feedback" class="subpanel stack-sm"></div>
       </div>
 
-      <!-- Distributed Never-Miss-Twice Week Simulator -->
-      <div class="card stack-gap" style="justify-content:space-between;">
-        <div class="stack-sm">
-          <h2>7. Distributed Week &amp; "Never Miss Twice"</h2>
+      <!-- Plateau of Latent Potential + Never Miss Twice -->
+      <div class="card stack-gap">
+        <div>
+          <h2>7. Plateau of Latent Potential &amp; "Never Miss Twice"</h2>
           <p class="muted">
-            Notice how a great week doesn’t need 4 heavy garage workouts. Click any day to cycle between <strong>Garage Heavy</strong>, <strong>Upstairs Micro-Doses</strong>, <strong>Hill/Joint-Gentle</strong>, and <strong>Rest</strong>.
+            Longevity compounds quietly before showing obvious physical change—which is why <strong>visibility &amp; tracking</strong> (our next step!) bridges the early gap, and why micro-days protect your streak.
           </p>
         </div>
 
-        <div class="subpanel stack-gap">
+        <div class="subpanel stack-sm">
+          <svg viewBox="0 0 420 174" style="width:100%; height:auto; display:block;" role="img" aria-label="Plateau of latent potential chart">
+            <line x1="35" y1="138" x2="395" y2="138" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <line x1="35" y1="18" x2="35" y2="138" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+
+            <path id="valley-fill" d="" fill="var(--warning, var(--fb-warning))" fill-opacity="0.18" />
+            <line x1="35" y1="138" x2="390" y2="22" stroke="var(--muted-foreground, var(--fb-muted))" stroke-width="2" stroke-dasharray="5 4" />
+            <text x="145" y="74" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5" transform="rotate(-18 145 74)">Linear expectation</text>
+
+            <path id="actual-curve" d="" fill="none" stroke="var(--primary, var(--fb-primary))" stroke-width="3" stroke-linecap="round" />
+            <text x="305" y="42" fill="var(--primary, var(--fb-primary))" font-size="10.5" font-weight="700">Compounding</text>
+            <text x="160" y="120" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="10.5" font-weight="700">Valley of Disappointment</text>
+
+            <line id="week-line" x1="125" y1="18" x2="125" y2="138" stroke="var(--foreground, var(--fb-fg))" stroke-width="1.5" stroke-dasharray="3 3" />
+            <circle id="week-dot-exp" cx="125" cy="108" r="4.5" fill="var(--muted-foreground, var(--fb-muted))" stroke="var(--card, var(--fb-card))" stroke-width="1.5" />
+            <circle id="week-dot-act" cx="125" cy="132" r="6" fill="var(--primary, var(--fb-primary))" stroke="var(--card, var(--fb-card))" stroke-width="2" />
+
+            <text x="35" y="158" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Week 1</text>
+            <text x="215" y="158" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Week 8</text>
+            <text x="390" y="158" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5">Week 16</text>
+          </svg>
+
+          <div>
+            <div class="meter-label" style="margin-bottom:2px;">
+              <label for="week-slider" class="muted semi">Timeline Explorer</label>
+              <span id="week-label" class="mono semi text-primary">Week 4</span>
+            </div>
+            <input id="week-slider" type="range" min="1" max="16" value="4" />
+          </div>
+          <div id="week-feedback" class="inner-box small muted"></div>
+        </div>
+
+        <!-- Compact Never Miss Twice Interactive Strip -->
+        <div class="subpanel stack-sm">
           <div class="row-between">
-            <span class="semi">Sample Realistic Week (WFH + 2 Office Days)</span>
-            <span class="small muted">Click any day</span>
+            <span class="small bold">Consistency Mindset: Click days to test "Never Miss Twice"</span>
+            <span class="small muted">Cycles intensity</span>
           </div>
           <div id="week-grid" class="week-grid"></div>
           <div id="tracker-status" class="status-banner"></div>
-          <div class="legend-row">
-            <span class="legend-item"><span class="legend-dot" style="background:var(--success, var(--fb-success));"></span>Garage Window</span>
-            <span class="legend-item"><span class="legend-dot" style="background:var(--primary, var(--fb-primary));"></span>Upstairs Micro</span>
-            <span class="legend-item"><span class="legend-dot" style="background:var(--chart-2, var(--fb-chart2));"></span>Hill / Gentle</span>
-            <span class="legend-item"><span class="legend-dot" style="background:var(--muted-foreground, var(--fb-muted));"></span>Rest / Office</span>
-          </div>
-        </div>
-
-        <div class="inner-box small muted">
-          <strong style="color:var(--foreground, var(--fb-fg));">Immediate Action Plan (Zero Purchases Needed):</strong>
-          Bring your <strong>foam slant boards</strong> and <strong>carabiner resistance bands</strong> upstairs next to your 10 lb dumbbells &amp; medium kettlebell. That single 2-minute move removes the guest-hallway barrier for 80% of your weekly training.
         </div>
       </div>
     </section>
@@ -873,7 +831,7 @@
   </div>
 
   <script>
-    // ---------- Optional Theme Toggle for Standalone Viewing ----------
+    // ---------- Theme Toggle ----------
     document.getElementById("theme-toggle").addEventListener("click", () => {
       const root = document.documentElement;
       const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -881,7 +839,90 @@
       root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
     });
 
-    // ---------- 1. Distributed vs. Workout Box Toggle ----------
+    // ---------- 1. Mental Reframing Flip Cards ----------
+    const reframes = [
+      {
+        title: "What \"Counts\"",
+        oldText: "“If I don’t go downstairs for a full 45-minute garage workout, it doesn’t really count.”",
+        newText: "“Movement is daily nutrition. Two-minute micro-doses upstairs and active screen posture accumulate real longevity—and keep my identity alive.”",
+        tag: "Starrett • Distributed",
+        flipped: true
+      },
+      {
+        title: "Downstairs Guests",
+        oldText: "“Sneaking past the guest door feels awkward—better not risk disturbing anyone.”",
+        newText: "“During daytime non-quiet hours or between bookings, using our own gym is completely fine. And on quiet days, upstairs handles 80% anyway.”",
+        tag: "Social Friction",
+        flipped: true
+      },
+      {
+        title: "Saving Energy for Dog Play",
+        oldText: "“If I work out now, I’ll be too drained to walk or play with the dog later.”",
+        newText: "“Stopping well short of exhaustion creates energy instead of spending it. Short, crisp efforts leave me fresher for walks and coding.”",
+        tag: "Energy Management",
+        flipped: false
+      },
+      {
+        title: "Irregular Schedules",
+        oldText: "“Our meals, walks, and workdays aren’t at fixed times, so we can’t stick to a routine.”",
+        newText: "“We don’t need clock habits—we need event habits. Standing up from a laptop, eating together, and walk pauses happen every single day.”",
+        tag: "1st Law • Cues",
+        flipped: false
+      },
+      {
+        title: "Screen & Laptop Inertia",
+        oldText: "“Screens are the enemy of movement; I have to turn off the laptop to be active.”",
+        newText: "“Pair movement with screens: floor-sitting, changing positions, or taking 90-second breaks between videos/builds turns inertia into a trigger.”",
+        tag: "2nd Law • Pairing",
+        flipped: false
+      },
+      {
+        title: "Joint Sensitivity & Flares",
+        oldText: "“I’m afraid doing the wrong thing will trigger a flare-up, so it’s safer to skip.”",
+        newText: "“Joint feedback is data, not failure. Separating calm days from gentle days—and observing patterns over time—replaces guesswork with clarity.”",
+        tag: "4th Law • Feedback",
+        flipped: false
+      }
+    ];
+
+    function renderReframes() {
+      const grid = document.getElementById("reframe-grid");
+      grid.innerHTML = reframes.map((r, i) => `
+        <button data-ref="${i}" class="reframe-card ${r.flipped ? "flipped" : ""}">
+          <div class="row-between" style="width:100%;">
+            <span class="semi" style="font-size:13px;">${r.title}</span>
+            <span class="badge ${r.flipped ? "badge-success" : "badge-warning"}">${r.flipped ? "Reframed" : "Old Script"}</span>
+          </div>
+          <p class="small ${r.flipped ? "" : "muted"}" style="line-height:1.5;">
+            ${r.flipped ? r.newText : r.oldText}
+          </p>
+          <div class="row-between" style="width:100%; margin-top:auto; padding-top:4px;">
+            <span class="small muted">${r.tag}</span>
+            <span class="small semi text-primary">${r.flipped ? "See old script ↺" : "Flip reframe →"}</span>
+          </div>
+        </button>
+      `).join("");
+
+      grid.querySelectorAll("[data-ref]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const idx = +btn.dataset.ref;
+          reframes[idx].flipped = !reframes[idx].flipped;
+          renderReframes();
+        });
+      });
+    }
+
+    document.getElementById("reframe-all-old").addEventListener("click", () => {
+      reframes.forEach(r => r.flipped = false);
+      renderReframes();
+    });
+    document.getElementById("reframe-all-new").addEventListener("click", () => {
+      reframes.forEach(r => r.flipped = true);
+      renderReframes();
+    });
+    renderReframes();
+
+    // ---------- 2. Distributed vs. Workout Box Toggle ----------
     function setTimelineMode(mode) {
       const isDist = mode === "dist";
       document.getElementById("mode-box").className = isDist ? "pill" : "pill active-red";
@@ -891,173 +932,65 @@
 
       const cap = document.getElementById("timeline-caption");
       if (isDist) {
-        cap.innerHTML = `<strong class="text-success">Distributed Movement Nutrition (Starrett × Atomic Habits):</strong> Total daily volume quietly hits 20–30 minutes of strength, hanging, hip mobility, and hill work—spread across 2–5 minute bursts that <em>boost</em> energy for work and dog play, with zero need to sneak past downstairs guests unless a clean garage window opens.`;
+        cap.innerHTML = `<strong class="text-success">Distributed Movement Nutrition (Starrett × Atomic Habits):</strong> Short, low-friction doses woven into transitions you already have—breaking up desk sitting, pairing with laptop time, using walk pauses, and treating the downstairs garage as an optional bonus when conditions are open.`;
       } else {
-        cap.innerHTML = `<strong class="text-error">The "Workout Box" Trap:</strong> Sitting all day at a desk, then asking tired evening willpower to overcome laptop inertia, guest noise anxiety, a chilly dusty garage, and decision fatigue. When the box fails, you get 0% movement and all the guilt.`;
+        cap.innerHTML = `<strong class="text-error">The "Workout Box" Trap:</strong> Long stretches of sitting followed by a high-friction cliff (leaving screens, passing downstairs guests, entering a chilly/dusty garage, and deciding what to do). When the box fails, you get zero movement and lingering guilt.`;
       }
     }
     document.getElementById("mode-box").addEventListener("click", () => setTimelineMode("box"));
     document.getElementById("mode-dist").addEventListener("click", () => setTimelineMode("dist"));
     setTimelineMode("dist");
 
-    // ---------- 2. Event-Based Trigger Map ----------
-    const triggers = [
-      {
-        id: "wfh",
-        label: "WFH Desk Transition",
-        sub: "End of call • Build/CI • Water break",
-        color: "var(--primary, var(--fb-primary))",
-        cue: "Every time you stand up from your coding desk (end of a meeting, waiting on tests/builds, refilling water).",
-        action: "1 sub-max micro-set right upstairs: 2–3 crisp pull-ups or a 25s dead hang on the doorway bar, OR 8 goblet squats with the upstairs kettlebell, OR 12 band pull-aparts.",
-        starrett: "Directly interrupts multi-hour hip flexor tightening and thoracic slouching—classic Deskbound / Built to Move nutrition.",
-        reward: "Takes 60–90 seconds, clears brain fog, zero sweat/shower needed, and ticks a quick tally mark for the day."
-      },
-      {
-        id: "laptop",
-        label: "Evening Laptop / Screen",
-        sub: "Watching • Browsing • Wind-down",
-        color: "var(--chart-2, var(--fb-chart2))",
-        cue: "Opening your laptop in the evening for videos, reading, or casual browsing (since you prefer laptops over the old TV).",
-        action: "Put your laptop on a low coffee table/ottoman and sit on a yoga mat or cushion on the floor—switching positions every 10 min (90/90, cross-legged, kneeling). Pair between episodes with 1 set of 10 lb DB lateral raises, curls, or silent band work.",
-        starrett: "Kelly Starrett’s #1 longevity vital sign: spending 20–30 min/day on the floor builds effortless hip mobility and accumulates sit-and-rise reps automatically.",
-        reward: "Zero willpower cost—you're still enjoying your laptop, just in an active position instead of sinking into the couch."
-      },
-      {
-        id: "hill",
-        label: "Hill Walk Sniff-Breaks",
-        sub: "Punctuated stops • Short run bursts",
-        color: "var(--success, var(--fb-success))",
-        cue: "Every time your dog stops to sniff on the hill for 15+ seconds (turning stop-and-go pacing into a built-in timer!).",
-        action: "Do 10 slow curb/slope calf raises, 5 slow uphill split squats per leg, or a single-leg balance hold until he moves on. When he wants to run, join him for 15–20 sec playful uphill surges. Optional: wear a light 10–15 lb pack on the hill.",
-        starrett: "Trains ankle range, calf/soleus durability, balance, and hill propulsion—directly protecting knee longevity.",
-        reward: "Turns waiting on sniff breaks into a mini-game, and preserves (even boosts) energy for dog play."
-      },
-      {
-        id: "meals",
-        label: "Eating Together Anchor",
-        sub: "Irregular clock • Reliable event",
-        color: "var(--warning, var(--fb-warning))",
-        cue: "Right while food is heating/simmering, or 5 minutes before sitting down to eat together (reliable event even when meal times float).",
-        action: "A 3-minute shared movement snack: both pick 1 pillar—e.g. doorway hangs/band rows, slant-board squats, or gentle floor shoulder openers for joint-sensitive days.",
-        starrett: "Brief pre-meal muscle contractions improve glucose handling and make movement a shared household normal.",
-        reward: "Built-in social accountability + immediate transition into a meal together."
-      },
-      {
-        id: "garage",
-        label: "Open Garage Window",
-        sub: "Guests out • Between bookings • Midday",
-        color: "var(--chart-3, var(--fb-chart3))",
-        cue: "Non-quiet daytime hours when guests are out or between bookings—treated as a 1–2×/week heavy bonus, NOT a daily requirement.",
-        action: "20–25 min focused heavy session on the horse stall mats with the main garage door CLOSED (no wind/noise/passersby): 2 supersets from your Longevity 6 (e.g., 95+ lb barbell deadlift + ring/pull-up work; 35 lb double-KB bench + goblet/slant squat; 2×35 lb farmer carries).",
-        starrett: "Provides the heavier mechanical tension for bone density and max strength that lighter upstairs snacks complement.",
-        reward: "Satisfying mild soreness + logging a concrete weight/rep PR in Notion."
-      },
-      {
-        id: "office",
-        label: "2×/Wk Office Days",
-        sub: "Commute • Long sitting stretches",
-        color: "var(--chart-1, var(--fb-chart1))",
-        cue: "In-office days already drain decision energy—drop all expectation of hitting the garage when you get home.",
-        action: "Micro-habits only: take stairs two at a time, stand for 1–2 calls, do one 30-second doorway hang when you walk back into the upstairs house.",
-        starrett: "Keeps the daily movement chain alive and prevents stiff hips/back without competing with work recovery.",
-        reward: "Zero guilt—protects the 'Never Miss Twice' streak effortlessly."
-      }
-    ];
-
-    let activeTrigger = "wfh";
-
-    function renderTriggers() {
-      const tabs = document.getElementById("trigger-tabs");
-      tabs.innerHTML = triggers.map(tr => {
-        const sel = tr.id === activeTrigger;
-        return `
-          <button data-trig="${tr.id}" class="trigger-tab ${sel ? "active" : ""}">
-            <div class="row-between">
-              <span class="semi" style="font-size:13px; color:${sel ? tr.color : "var(--foreground, var(--fb-fg))"};">${tr.label}</span>
-              ${sel ? `<span style="width:8px; height:8px; border-radius:50%; background:${tr.color};"></span>` : ""}
-            </div>
-            <div class="small muted" style="margin-top:3px;">${tr.sub}</div>
-          </button>
-        `;
-      }).join("");
-
-      tabs.querySelectorAll("[data-trig]").forEach(b => {
-        b.addEventListener("click", () => {
-          activeTrigger = b.dataset.trig;
-          renderTriggers();
-        });
-      });
-
-      const cur = triggers.find(t => t.id === activeTrigger);
-      document.getElementById("trigger-detail").innerHTML = `
-        <div class="grid-2" style="gap:12px;">
-          <div class="inner-box stack-sm">
-            <div class="small bold" style="color:${cur.color}; text-transform:uppercase; letter-spacing:0.04em;">1st Law • Event Cue</div>
-            <p class="small">${cur.cue}</p>
-            <div class="small bold text-success" style="text-transform:uppercase; letter-spacing:0.04em; margin-top:6px;">3rd Law • Micro-Dose Action</div>
-            <p class="small">${cur.action}</p>
-          </div>
-          <div class="inner-box stack-sm">
-            <div class="small bold text-chart2" style="text-transform:uppercase; letter-spacing:0.04em;">Kelly Starrett Longevity Angle</div>
-            <p class="small muted">${cur.starrett}</p>
-            <div class="small bold text-warning" style="text-transform:uppercase; letter-spacing:0.04em; margin-top:6px;">4th Law • Immediate Payoff</div>
-            <p class="small">${cur.reward}</p>
-          </div>
-        </div>
-      `;
-    }
-    renderTriggers();
-
-    // ---------- 3. House, Guest & Hill Friction Simulator ----------
+    // ---------- 3. Environment & Friction Simulator ----------
     const tweaks = [
       {
-        id: "upstairsKit",
-        title: "Bring Slant Boards & Bands Upstairs",
-        law: "Starrett • Quiet",
+        id: "upstairsTools",
+        title: "Keep Quiet Gear Visible Upstairs",
+        law: "1st Law • Obvious",
         frictionDrop: 24,
-        energyBoost: 10,
-        coverageBoost: 28,
-        desc: "Add your foam slant boards + silent carabiner bands (10–50 lb) to your upstairs DBs, KB & pull-up bar. Unlocks 80% of longevity training with zero guest anxiety.",
+        energyBoost: 8,
+        cueBoost: 24,
+        desc: "Place a few quiet, grab-and-go tools where you actually live and work. Out of sight downstairs = forgotten; visible upstairs = automatic cues with zero guest noise.",
         active: true
       },
       {
         id: "floorLaptop",
-        title: "Create a Floor-Sitting Laptop Spot",
-        law: "Starrett • Passive",
+        title: "Build an Active Laptop Spot",
+        law: "Starrett • Living",
         frictionDrop: 14,
         energyBoost: 8,
-        coverageBoost: 15,
-        desc: "Pair evening laptop time with a yoga mat/cushion on the floor. Banks daily hip mobility and sit-and-rise reps without fighting screen inertia.",
+        cueBoost: 16,
+        desc: "Keep a mat/cushion near a low table so evening laptop time naturally invites floor-sitting and position changes instead of pure couch inertia.",
         active: true
       },
       {
         id: "sniffCues",
-        title: "Turn Dog Sniff-Breaks Into Micro-Cues",
+        title: "Treat Walk Pauses as Built-In Cues",
         law: "1st Law • Hill",
-        frictionDrop: 14,
+        frictionDrop: 12,
         energyBoost: 8,
-        coverageBoost: 14,
-        desc: "Every 15s sniff stop = curb calf raises or slow hill lunges; join short run bursts when your dog wants to sprint.",
+        cueBoost: 16,
+        desc: "Reframe stop-and-sniff pauses on the hill from awkward waiting into automatic cues for posture, balance, or brief loading—plus playful bursts when your dog runs.",
         active: false
       },
       {
-        id: "microDose",
-        title: "Sub-Max Micro-Doses (2–4 RIR)",
-        law: "Energy Safe",
+        id: "garageCozy",
+        title: "Create One Cozy, Closed-Door Garage Zone",
+        law: "2nd & 3rd Law",
+        frictionDrop: 16,
+        energyBoost: 4,
+        cueBoost: 10,
+        desc: "Keep the main garage door shut (eliminates wind, cold drafts, door noise, and passersby), pre-warm, and tidy/light one dedicated corner so it feels inviting during daytime or empty-guest windows.",
+        active: false
+      },
+      {
+        id: "twoMinFloor",
+        title: "Lower the Floor (2-Minute Rule + Energy Cap)",
+        law: "3rd Law • Easy",
         frictionDrop: 14,
         energyBoost: 22,
-        coverageBoost: 10,
-        desc: "Stop 2–4 reps before exhaustion during weekday snacks. Builds real strength while leaving full energy for dog play and coding.",
-        active: false
-      },
-      {
-        id: "garageProtocol",
-        title: "Guest-Safe Cozy Garage Protocol",
-        law: "20% Heavy Bonus",
-        frictionDrop: 14,
-        energyBoost: 2,
-        coverageBoost: 13,
-        desc: "Keep main door shut (no wind/noise), lift quietly on horse stall mats during non-quiet/empty windows, warm & declutter one dedicated corner.",
+        cueBoost: 14,
+        desc: "Give yourself permission to stop after 2 minutes and always end well before exhaustion—dissolving starting dread and preserving energy for dog walks and work.",
         active: false
       }
     ];
@@ -1093,7 +1026,7 @@
       const isOn = id => tweaks.find(t => t.id === id).active;
       const friction = Math.max(8, 88 - tweaks.filter(t => t.active).reduce((s, t) => s + t.frictionDrop, 0));
       const energy   = Math.min(98, 48 + tweaks.filter(t => t.active).reduce((s, t) => s + t.energyBoost, 0));
-      const coverage = Math.min(100, 20 + tweaks.filter(t => t.active).reduce((s, t) => s + t.coverageBoost, 0));
+      const cues     = Math.min(100, 20 + tweaks.filter(t => t.active).reduce((s, t) => s + t.cueBoost, 0));
 
       const setMeter = (barId, valId, pct, goodHigh) => {
         const bar = document.getElementById(barId);
@@ -1112,25 +1045,24 @@
 
       setMeter("friction-bar", "friction-val", friction, false);
       setMeter("energy-bar", "energy-val", energy, true);
-      setMeter("coverage-bar", "coverage-val", coverage, true);
+      setMeter("cue-bar", "cue-val", cues, true);
 
-      // Update House SVG
-      document.getElementById("svg-upstairs-kit").setAttribute("opacity", isOn("upstairsKit") ? "1" : "0.2");
+      document.getElementById("svg-upstairs-tools").setAttribute("opacity", isOn("upstairsTools") ? "1" : "0.2");
       document.getElementById("svg-floor-spot").setAttribute("opacity", isOn("floorLaptop") ? "1" : "0.2");
       document.getElementById("svg-sniff-cue").setAttribute("opacity", isOn("sniffCues") ? "1" : "0.2");
-      document.getElementById("svg-bypass").setAttribute("opacity", (isOn("upstairsKit") || isOn("sniffCues")) ? "1" : "0.2");
+      document.getElementById("svg-bypass").setAttribute("opacity", (isOn("upstairsTools") || isOn("sniffCues")) ? "1" : "0.2");
 
-      const gp = isOn("garageProtocol");
-      document.getElementById("svg-garage-ready").setAttribute("opacity", gp ? "1" : "0.18");
-      document.getElementById("svg-guest-clear").setAttribute("opacity", gp ? "1" : "0.18");
+      const gc = isOn("garageCozy");
+      document.getElementById("svg-garage-ready").setAttribute("opacity", gc ? "1" : "0.18");
+      document.getElementById("svg-guest-clear").setAttribute("opacity", gc ? "1" : "0.18");
       const gBg = document.getElementById("svg-garage-bg");
       const gSt = document.getElementById("svg-garage-state");
-      if (gp) {
+      if (gc) {
         gBg.setAttribute("fill", "var(--warning, var(--fb-warning))");
         gBg.setAttribute("fill-opacity", "0.12");
         gBg.setAttribute("stroke", "var(--warning, var(--fb-warning))");
         gSt.setAttribute("fill", "var(--warning, var(--fb-warning))");
-        gSt.textContent = "Pre-warmed • Door closed • Mats";
+        gSt.textContent = "Warm corner • Door shut • Clean";
       } else {
         gBg.setAttribute("fill", "var(--chart-1, var(--fb-chart1))");
         gBg.setAttribute("fill-opacity", "0.13");
@@ -1141,11 +1073,11 @@
 
       const sum = document.getElementById("sim-summary");
       if (friction >= 68) {
-        sum.innerHTML = `<strong class="text-error">High Friction Bottleneck:</strong> Relying on sneaking past downstairs guests into a cold, dusty garage—while tired from screens—keeps daily movement inconsistent.`;
+        sum.innerHTML = `<strong class="text-error">High Friction Bottleneck:</strong> Every barrier stacks at once—leaving screens, passing downstairs guests, entering a chilly/dusty garage, and worrying about draining energy.`;
       } else if (friction >= 35) {
-        sum.innerHTML = `<strong class="text-warning">Solid Progress:</strong> Moving quiet tools upstairs bypasses the guest hallway most days. Adding sub-max micro-doses and sniff-break cues will protect dog-play energy and cover all 6 longevity pillars.`;
+        sum.innerHTML = `<strong class="text-warning">Environment Improving:</strong> Bringing cues upstairs breaks the garage bottleneck. Adding walk-pause cues, a 2-minute floor, and a cozy garage corner removes the remaining drag.`;
       } else {
-        sum.innerHTML = `<strong class="text-success">Resilient Distributed System:</strong> Upstairs snacks, laptop floor-sitting, and hill sniff-breaks cover 80%+ of longevity strength automatically—leaving full energy for dog play and turning open garage windows into a fun heavy bonus.`;
+        sum.innerHTML = `<strong class="text-success">Frictionless Environment:</strong> Movement cues live inside your normal day (desk breaks, active laptop spots, hill walk pauses), energy stays protected, and the garage becomes an inviting bonus when windows open.`;
       }
     }
 
@@ -1159,197 +1091,219 @@
       renderTweaks();
       updateSimulation();
     });
-
     renderTweaks();
     updateSimulation();
 
-    // ---------- 4. Longevity 6 Menu (Mapped to Real Notion Inventory) ----------
-    const menuModes = [
-      { id: "upstairs", label: "Upstairs Quiet (Daily Engine)", cls: "active", bannerCls: "status-primary",
-        banner: "<strong>Upstairs Quiet Mode:</strong> Zero stairs, zero guest noise, zero cold garage. Uses your upstairs 2×10 lb DBs, medium KB, doorway bar—plus foam slant boards &amp; bands brought up from the garage." },
-      { id: "garage", label: "Garage Heavy Bonus (1–2×/wk)", cls: "active", bannerCls: "status-success",
-        banner: "<strong>Garage Heavy Window:</strong> For non-quiet daytime hours or between guest bookings. Door closed, horse stall mats for quiet landings. Built directly on your July 25 baseline and Notion inventory." },
-      { id: "green", label: "Partner: Green Day (Feel Good)", cls: "active-green", bannerCls: "status-success",
-        banner: "<strong>Green Day (Joints Calm, Good Energy):</strong> Controlled strength loading with smooth tempo—stop 2–3 reps shy of fatigue so you build resilience without triggering a delayed flare." },
-      { id: "yellow", label: "Partner: Yellow Day (Joint-Gentle)", cls: "active-yellow", bannerCls: "status-warning",
-        banner: "<strong>Yellow Day (Stiff or Mild Joint Sensitivity):</strong> Swap heavy compression/grip for silent bands, light KBs/DBs, isometric holds, and controlled partial range. Log 24-hr response to map safe moves." },
-      { id: "red", label: "Partner: Red Day (Flare-Safe)", cls: "active-red", bannerCls: "status-error",
-        banner: "<strong>Red Day (Active Flare or Low Energy):</strong> Zero heavy load. Focus strictly on Kelly Starrett’s restorative vital signs—breathing, gentle unloaded range of motion, and supported floor positions." }
-    ];
-
-    const pillars = [
+    // ---------- 4. The Four Laws (Environment & Mindset Only) ----------
+    const laws = [
       {
-        name: "1. Squat & Knee Longevity",
-        why: "Protects knees, hips, and ability to get up off the floor at 80.",
-        upstairs: { move: "Slant-Board Goblet Squat or ATG Split Squat", dose: "1–2 sets × 8–10 (2 RIR)", gear: "Medium KB (18/35 lb) + Foam Slant Boards" },
-        garage:   { move: "35 lb KB Goblet Squat → Barbell / 53 lb KB", dose: "3 × 8–10 (log +1 rep or +2.5 lb)", gear: "35/53 lb KB or Barbell + Slant Boards" },
-        green:    { move: "Controlled Box/Chair or Slant-Board Squat", dose: "2–3 × 8–10 slow tempo", gear: "Bodyweight, 10 lb DB, or 18 lb KB" },
-        yellow:   { move: "Supported Split Squat or Wall Sit Isometric", dose: "2 × 20–30s hold (pain-free depth)", gear: "Doorframe support / Yoga blocks" },
-        red:      { move: "Gentle Seated Knee Extensions & Ankle Circles", dose: "2 min easy unloaded ROM", gear: "Chair or Yoga Mat" }
+        id: "obvious",
+        step: "1. Cue",
+        law: "Make It Obvious",
+        color: "var(--chart-1, var(--fb-chart1))",
+        principle: "You don't forget habits when the environment reminds you visually and at natural transition points.",
+        friction: "Gear hidden in a downstairs garage stays invisible during WFH days, and irregular meal/walk times make clock alarms easy to ignore.",
+        solutions: [
+          "Put quiet cues directly in your upstairs line of sight (near laptop spots, doorways you pass, and the living area).",
+          "Anchor cues to reliable transitions—standing up from the desk, eating together, or dog-walk sniff stops—rather than clock times.",
+          "Eliminate 'what should I do?' ambiguity later with a tiny visible menu (once programming & labeling are designed)."
+        ]
       },
       {
-        name: "2. Hinge & Posterior Chain",
-        why: "Protects lower back, builds glutes/hamstrings for hills and lifting.",
-        upstairs: { move: "Single-Leg KB RDL or Kettlebell Swings", dose: "1–2 sets × 8–12 crisp reps", gear: "Medium KB (18/35 lb) or 2×10 lb DBs" },
-        garage:   { move: "Barbell Deadlift (95 lb+ baseline) or 53/70 lb KB Swing", dose: "3 × 5–6 controlled lowering on stall mats", gear: "45/27 lb Bar + Micro-Plates (1.25/2.5 lb)" },
-        green:    { move: "KB Romanian Deadlift or Hip Thrust", dose: "2–3 × 8–10 smooth hinge", gear: "18/35 lb KB or 10–15 lb DBs + Bench" },
-        yellow:   { move: "Glute Bridge or Banded Pull-Through", dose: "2 × 12 slow squeeze (low spine load)", gear: "Yoga Mat or Carabiner Bands (10–30 lb)" },
-        red:      { move: "Floor Pelvic Tilts & Gentle Cat-Cow", dose: "60–90s slow breathing", gear: "Yoga Mat" }
+        id: "attractive",
+        step: "2. Craving",
+        law: "Make It Attractive",
+        color: "var(--chart-2, var(--fb-chart2))",
+        principle: "Your brain avoids spaces that feel cold, dusty, awkward, or isolating—and gravitates toward comfort, pairing, and shared rituals.",
+        friction: "Cold air, dust, wind/passersby if the garage door opens, guest self-consciousness, and competing with cozy laptop time.",
+        solutions: [
+          "Pair light movement or floor-sitting directly with laptop watching/listening instead of treating screens as the enemy.",
+          "Upgrade the sensory feel of one garage corner (warmth, lighting, clean floor, main door closed) so it feels like a studio, not storage.",
+          "Use shared moments (eating together, checking in together) to make movement a casual household normal rather than a solo chore."
+        ]
       },
       {
-        name: "3. Pull, Posture & Hanging",
-        why: "Undoes software-engineer desk posture; grip & shoulder health = longevity.",
-        upstairs: { move: "Doorway Pull-Ups (2–3 reps) or Dead Hang (20–35s)", dose: "3–5 micro-sets across WFH transitions", gear: "Doorway Pull-Up Bar + Bands (pull-aparts)" },
-        garage:   { move: "Pull-Ups (3×4+ baseline) or Gymnastic Ring Rows", dose: "3 × 4–8 (add 1 rep per week)", gear: "Pull-Up Bar / Rings / 15 lb DB 1-Arm Row" },
-        green:    { move: "Ring Rows (adjustable angle) or Banded Row", dose: "2–3 × 8–12", gear: "Gymnastic Rings or 20–30 lb Bands" },
-        yellow:   { move: "Carabiner Band Row or Wrist-Strap Pull-Back", dose: "2 × 12 (uses wrist straps if fingers hurt!)", gear: "Bands + Velcro Wrist/Ankle Straps" },
-        red:      { move: "Therapy Band Posture Openers & Shoulder Shrugs", dose: "1–2 min gentle scapular glides", gear: "Light Therapy Band" }
+        id: "easy",
+        step: "3. Response",
+        law: "Make It Easy",
+        color: "var(--chart-3, var(--fb-chart3))",
+        principle: "Reduce activation energy until starting is easier than debating whether to start. Standardize showing up before optimizing.",
+        friction: "Stairs + guest hallway + temperature change + low energy + decision fatigue stack into a giant mental wall.",
+        solutions: [
+          "Apply the Two-Minute Rule: make the minimum commitment tiny enough that even a tired, busy day says yes.",
+          "Keep 80% of daily movement upstairs/outdoors so guest presence never blocks your day.",
+          "Establish clear daytime/empty-window permission for the garage so you don't waste willpower negotiating with yourself."
+        ]
       },
       {
-        name: "4. Push & Overhead Reach",
-        why: "Maintains shoulder stability, triceps, and overhead reach without impingement.",
-        upstairs: { move: "Incline/Floor Push-Ups or 10 lb DB Lateral Raises & OHP", dose: "1–2 micro-sets × 10–12 (laptop break)", gear: "2×10 lb DBs or Medium KB" },
-        garage:   { move: "Double 35 lb KB Bench Press (3×8 baseline) / Incline", dose: "3 × 8–10 (adjustable bench)", gear: "2×35 lb KBs + Adjustable Bench" },
-        green:    { move: "Incline Push-Ups or Light DB Press", dose: "2–3 × 8–10", gear: "Bench / Countertop / 5–10 lb DBs" },
-        yellow:   { move: "Band Chest Press or Isometric Wall Press", dose: "2 × 10–12 (zero wrist hyperextension)", gear: "Carabiner Bands (10–20 lb)" },
-        red:      { move: "Supine Floor Snow-Angels (Unloaded Overhead Reach)", dose: "60–90s gentle range", gear: "Yoga Mat" }
-      },
-      {
-        name: "5. Carry, Grip & Hill Locomotion",
-        why: "Grip strength & loaded walking are two of the strongest longevity predictors.",
-        upstairs: { move: "Sniff-Break Hill Calf Raises / Lunges + Suitcase KB Carry", dose: "30–45s carry or sniff-break reps on hill", gear: "Neighborhood Hill + Medium KB / Light Pack" },
-        garage:   { move: "Farmer Carry (2×35 lb KB × 45s+ baseline) or Sled Pull", dose: "2–3 × 45–60s steady posture", gear: "2×35 lb KBs (or 53 lb 1-arm) / Sled" },
-        green:    { move: "Light Suitcase Carry (10–18 lb) or Hill Walk", dose: "2 × 30s per side, tall posture", gear: "10–15 lb DB or 18 lb KB" },
-        yellow:   { move: "Unloaded Brisk Hill Intervals or Balance Holds", dose: "5–10 min gentle uphill / sniff-break balance", gear: "Neighborhood Hill" },
-        red:      { move: "Easy Flat/Gentle Stroll (Nasal Breathing)", dose: "5–15 min recovery walk", gear: "Just shoes" }
-      },
-      {
-        name: "6. Floor, Core & Starrett Vital Signs",
-        why: "Built to Move fundamentals: sit-and-rise, spine rotation, balance, breathing.",
-        upstairs: { move: "Evening Laptop Floor-Sitting + Windmills / L-Sit Tuck", dose: "15–30 min floor sitting + 1 core snack", gear: "Yoga Mat / Blocks / Cushion" },
-        garage:   { move: "KB Windmills, Plank (30–60s), Supported Calf Raises", dose: "2 rounds at end of session", gear: "BJJ/Yoga Mat + Slant Boards" },
-        green:    { move: "Dead Bugs, Bird-Dogs & Sit-to-Rise Practice", dose: "2 × 8 slow controlled reps", gear: "Yoga Mat / Blocks" },
-        yellow:   { move: "90/90 Hip Switches & Seated Thoracic Twists", dose: "3–5 min while watching laptop", gear: "Yoga Mat / Yoga Ball" },
-        red:      { move: "Box Breathing (4-4-4-4) on Floor w/ Legs Elevated", dose: "3–5 min nervous-system downshift", gear: "Yoga Mat + Couch/Ball" }
+        id: "satisfying",
+        step: "4. Reward",
+        law: "Make It Satisfying",
+        color: "var(--chart-4, var(--fb-chart4))",
+        principle: "Long-term longevity is invisible today—you need immediate feelings of accomplishment, progress, or calm feedback right now.",
+        friction: "Visible change takes months; meanwhile, uncertainty around joint comfort can make trying feel stressful instead of rewarding.",
+        solutions: [
+          "Chase the immediate post-effort lift: feeling looser, accomplished, and mildly worked—never wrecked.",
+          "Make invisible consistency visible (our upcoming tracking & labeling system will turn tiny votes into unmistakable progress).",
+          "For joint-sensitive days, treat calm symptom-free logging as a real win that builds confidence and clarity."
+        ]
       }
     ];
 
-    let activeMenuMode = "upstairs";
+    let activeLaw = "obvious";
 
-    function renderLongevityMenu() {
-      const pillsEl = document.getElementById("menu-mode-pills");
-      pillsEl.innerHTML = menuModes.map(m => `
-        <button data-mode="${m.id}" class="pill ${m.id === activeMenuMode ? m.cls : ""}">${m.label}</button>
-      `).join("");
-
-      pillsEl.querySelectorAll("[data-mode]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          activeMenuMode = btn.dataset.mode;
-          renderLongevityMenu();
-        });
-      });
-
-      const curMode = menuModes.find(m => m.id === activeMenuMode);
-      const banner = document.getElementById("menu-mode-banner");
-      banner.className = "status-banner " + curMode.bannerCls;
-      banner.innerHTML = curMode.banner;
-
-      const grid = document.getElementById("longevity-grid");
-      grid.innerHTML = pillars.map(p => {
-        const d = p[activeMenuMode];
+    function renderLaws() {
+      const tabsEl = document.getElementById("law-tabs");
+      tabsEl.innerHTML = laws.map(l => {
+        const sel = l.id === activeLaw;
         return `
-          <div class="pillar-card">
-            <div>
-              <div class="semi" style="font-size:14px;">${p.name}</div>
-              <div class="small muted" style="margin-top:2px;">${p.why}</div>
+          <button data-law="${l.id}" class="select-tab ${sel ? "active" : ""}">
+            <div class="row-between">
+              <span class="small mono bold" style="color:${l.color};">${l.step}</span>
+              ${sel ? `<span style="width:8px; height:8px; border-radius:50%; background:${l.color};"></span>` : ""}
             </div>
-            <div class="inner-box stack-sm" style="flex:1;">
-              <div class="semi" style="font-size:13px;">${d.move}</div>
-              <div class="small text-primary semi">${d.dose}</div>
-            </div>
-            <div class="pillar-equip"><strong>Gear:</strong> ${d.gear}</div>
-          </div>
+            <div class="semi" style="margin-top:4px; font-size:14px;">${l.law}</div>
+          </button>
         `;
       }).join("");
-    }
-    renderLongevityMenu();
 
-    // ---------- 5. Joint-Sensitive Pre-Flight Filter ----------
-    const joints = [
-      { id: "none", label: "All Joints Calm", badge: "Green Light", cls: "active-green",
-        avoid: "Nothing restricted—still keep 1–3 reps in reserve so good days don’t accidentally trigger tomorrow’s flare.",
-        safe: [
-          "Full Longevity 6 available (slant-board squats, KB/DB hinges, ring/band rows, light carries).",
-          "Great day to test ONE slightly heavier weight and log the 24-hour response."
-        ]
-      },
-      { id: "wrists", label: "Wrists / Hands Sensitive", badge: "Modify Grip", cls: "active-yellow",
-        avoid: "Skip floor push-ups, barbell front racks, heavy farmer carries, and dead hangs.",
-        safe: [
-          "<strong>Use your Velcro Wrist/Ankle Straps + Carabiner Bands!</strong> Loop bands around forearms/wrists for rows and pull-aparts with zero finger/wrist strain.",
-          "Lower body without gripping: slant-board bodyweight squats, glute bridges, curb calf raises, uphill walking."
-        ]
-      },
-      { id: "knees", label: "Knees Sensitive", badge: "Modify Flexion", cls: "active-yellow",
-        avoid: "Skip deep ATG split squats, jump rope, and steep downhill pounding.",
-        safe: [
-          "Posterior chain & upper body shine today: glute bridges, light KB RDL, band rows, DB lateral raises, doorway hangs.",
-          "Gentle knee nourishers: isometric quad/wall-sit holds at a pain-free shallow angle (20–30s) or supported heel raises."
-        ]
-      },
-      { id: "shoulders", label: "Shoulders Sensitive", badge: "Modify Overhead", cls: "active-yellow",
-        avoid: "Skip overhead presses, deep bench presses, and full bodyweight dead hangs.",
-        safe: [
-          "Focus on lower body + core: slant-board goblet squats (hold close to chest), hinges, hill walks, bird-dogs.",
-          "Gentle upper: light therapy-band external rotations and neutral-grip band rows keeping elbows tucked."
-        ]
-      },
-      { id: "back", label: "Low Back / Hips Sensitive", badge: "Decompress", cls: "active-yellow",
-        avoid: "Skip heavy deadlifts, bent-over rows, and heavy KB swings.",
-        safe: [
-          "Decompression & supported moves: partial-weight doorway hang (feet on floor!), chest-supported band rows, gentle glute bridges.",
-          "Starrett relief: floor lying with calves elevated on couch/yoga ball + slow 4-4-4-4 breathing."
-        ]
-      },
-      { id: "flare", label: "Systemic Fatigue / Flare", badge: "Red Day", cls: "active-red",
-        avoid: "Zero strength loading today—pushing through a systemic flare sets recovery back days.",
-        safe: [
-          "5–10 min gentle stroll or legs-up floor breathing counts 100% as a longevity vote.",
-          "Log 'Red Day' cleanly without guilt; resume Yellow Day when calm returns."
-        ]
-      }
-    ];
-
-    let activeJoint = "wrists";
-
-    function renderJointTool() {
-      const pills = document.getElementById("joint-pills");
-      pills.innerHTML = joints.map(j => `
-        <button data-joint="${j.id}" class="pill ${j.id === activeJoint ? j.cls : ""}">${j.label}</button>
-      `).join("");
-
-      pills.querySelectorAll("[data-joint]").forEach(btn => {
+      tabsEl.querySelectorAll("[data-law]").forEach(btn => {
         btn.addEventListener("click", () => {
-          activeJoint = btn.dataset.joint;
-          renderJointTool();
+          activeLaw = btn.dataset.law;
+          renderLaws();
         });
       });
 
-      const cur = joints.find(j => j.id === activeJoint);
-      const badgeCls = cur.cls === "active-green" ? "badge badge-success" : cur.cls === "active-red" ? "badge badge-error" : "badge badge-warning";
-      document.getElementById("joint-output").innerHTML = `
-        <div class="row-between">
-          <h3>${cur.label}</h3>
-          <span class="${badgeCls}">${cur.badge}</span>
+      const cur = laws.find(l => l.id === activeLaw);
+      document.getElementById("law-detail").innerHTML = `
+        <div class="grid-12">
+          <div class="col-5 stack-sm">
+            <div>
+              <div class="small bold" style="color:${cur.color}; text-transform:uppercase; letter-spacing:0.04em;">${cur.step} → ${cur.law}</div>
+              <p class="semi" style="margin-top:4px;">${cur.principle}</p>
+            </div>
+            <div class="inner-box">
+              <div class="small bold text-warning" style="margin-bottom:4px;">The Barrier It Solves</div>
+              <p class="small muted">${cur.friction}</p>
+            </div>
+          </div>
+          <div class="col-7 inner-box stack-sm">
+            <div class="small bold text-success">Environment &amp; Mindset Solutions</div>
+            <ul class="clean-list">
+              ${cur.solutions.map(item => `
+                <li>
+                  <span class="bullet-dot" style="background-color:${cur.color};"></span>
+                  <span>${item}</span>
+                </li>
+              `).join("")}
+            </ul>
+          </div>
         </div>
-        <div class="small text-warning"><strong>Skip / Pause Today:</strong> <span class="muted">${cur.avoid}</span></div>
-        <div class="small bold text-success" style="margin-top:4px;">Safe Options With Your Home Gear:</div>
-        <ul class="clean-list">
-          ${cur.safe.map(s => `<li><span class="bullet-dot" style="background:var(--success, var(--fb-success));"></span><span>${s}</span></li>`).join("")}
-        </ul>
       `;
     }
-    renderJointTool();
+    renderLaws();
+
+    // ---------- 5. Event-Based Trigger Map (No Specific Programming) ----------
+    const triggers = [
+      {
+        id: "wfh",
+        label: "WFH Desk Transitions",
+        sub: "End of call • Build wait • Water break",
+        color: "var(--primary, var(--fb-primary))",
+        cue: "Standing up from your desk between calls, while waiting on code/builds, or grabbing water.",
+        env: "Keep a visible cue right on the path between your desk and kitchen/hallway so you literally pass it every time you stand up.",
+        mindset: "Replaces 'I'm too busy to work out' with 60–90 second posture & strength resets that sharpen focus instead of stealing time."
+      },
+      {
+        id: "laptop",
+        label: "Evening Laptop Time",
+        sub: "Watching • Reading • Wind-down",
+        color: "var(--chart-2, var(--fb-chart2))",
+        cue: "Opening a laptop for evening entertainment or casual browsing (your actual default screen, not the old TV).",
+        env: "Set up one comfortable floor/mat spot at a low table and keep light quiet gear within arm's reach of your favorite laptop spots.",
+        mindset: "Stops fighting screen inertia—uses Kelly Starrett's active-environment principle so relaxing with a laptop quietly builds mobility and habit votes."
+      },
+      {
+        id: "hill",
+        label: "Hill Walk Pauses",
+        sub: "Stop-and-sniff rhythm • Short run bursts",
+        color: "var(--success, var(--fb-success))",
+        cue: "Frequent sniff stops on the neighborhood hill, plus spontaneous bursts when your dog wants to run.",
+        env: "The hill itself is built-in environmental resistance; anything kept right beside the leash has zero friction to grab.",
+        mindset: "Flips stop-and-go walk pacing from an interruption into a playful built-in interval cue—without draining dog-play energy."
+      },
+      {
+        id: "meals",
+        label: "Shared Meal Anchor",
+        sub: "Floating clock • Guaranteed daily event",
+        color: "var(--warning, var(--fb-warning))",
+        cue: "Right before cooking/serving or right after finishing a shared meal—consistent as an event even when the time shifts daily.",
+        env: "Happens upstairs together in the same room, making a 2–3 minute shared check-in or micro-habit effortless.",
+        mindset: "Turns movement into a lighthearted 'we' ritual where each person adapts freely to their own energy or joint comfort that day."
+      },
+      {
+        id: "garage",
+        label: "Open Garage Windows",
+        sub: "Daytime non-quiet hours • Empty gaps",
+        color: "var(--chart-3, var(--fb-chart3))",
+        cue: "Clear daytime hours when downstairs guests are out or between bookings.",
+        env: "Pre-warmed corner, clean lighting, main door closed (blocks wind, street view, and loud door noise).",
+        mindset: "Removes the guilt loop: the garage is an exciting bonus when conditions align, never the single point of failure for your week."
+      },
+      {
+        id: "office",
+        label: "2×/Wk Office Days",
+        sub: "Commute • Lower evening willpower",
+        color: "var(--chart-1, var(--fb-chart1))",
+        cue: "Natural boundaries of an office day: stairs instead of elevators, standing transitions, and walking back through your front door.",
+        env: "Drop all expectation of a big evening session on office days—keep the bar at a single tiny arrival cue.",
+        mindset: "Protects consistency by matching expectations to real energy instead of setting yourself up to 'fail' twice a week."
+      }
+    ];
+
+    let activeTrigger = "wfh";
+
+    function renderTriggers() {
+      const tabs = document.getElementById("trigger-tabs");
+      tabs.innerHTML = triggers.map(tr => {
+        const sel = tr.id === activeTrigger;
+        return `
+          <button data-trig="${tr.id}" class="select-tab ${sel ? "active" : ""}">
+            <div class="row-between">
+              <span class="semi" style="font-size:13px; color:${sel ? tr.color : "var(--foreground, var(--fb-fg))"};">${tr.label}</span>
+              ${sel ? `<span style="width:8px; height:8px; border-radius:50%; background:${tr.color};"></span>` : ""}
+            </div>
+            <div class="small muted" style="margin-top:3px;">${tr.sub}</div>
+          </button>
+        `;
+      }).join("");
+
+      tabs.querySelectorAll("[data-trig]").forEach(b => {
+        b.addEventListener("click", () => {
+          activeTrigger = b.dataset.trig;
+          renderTriggers();
+        });
+      });
+
+      const cur = triggers.find(t => t.id === activeTrigger);
+      document.getElementById("trigger-detail").innerHTML = `
+        <div class="grid-3" style="gap:12px;">
+          <div class="inner-box stack-sm">
+            <div class="small bold" style="color:${cur.color}; text-transform:uppercase; letter-spacing:0.04em;">Existing Event Cue</div>
+            <p class="small">${cur.cue}</p>
+          </div>
+          <div class="inner-box stack-sm">
+            <div class="small bold text-chart2" style="text-transform:uppercase; letter-spacing:0.04em;">Environment Setup</div>
+            <p class="small">${cur.env}</p>
+          </div>
+          <div class="inner-box stack-sm">
+            <div class="small bold text-success" style="text-transform:uppercase; letter-spacing:0.04em;">Mental Reframe</div>
+            <p class="small">${cur.mindset}</p>
+          </div>
+        </div>
+      `;
+    }
+    renderTriggers();
 
     // ---------- 6. Goldilocks Effort Curve ----------
     const goldSlider = document.getElementById("gold-slider");
@@ -1382,39 +1336,86 @@
 
       if (val < 33) {
         dot.setAttribute("fill", "var(--muted-foreground, var(--fb-muted))");
-        label.textContent = "Too Easy (No Adaptation)";
+        label.textContent = "Too Easy (Boredom / No Progress Signal)";
         label.style.color = "var(--muted-foreground, var(--fb-muted))";
         fb.innerHTML = `
-          <div class="semi">Great for Red/Recovery Days—Too Light for Strength Gains</div>
-          <p class="small muted">Good for loosening desk stiffness, but muscles won’t get stronger if every set feels effortless.</p>
-          <div class="small semi text-primary">Nudge up: Slow your lowering phase to 3 seconds, add 2 reps, or step up from 10 lb DBs to your 18/35 lb KB.</div>
+          <div class="semi">Great for Low-Energy / Recovery Days—Too Mild for Motivation</div>
+          <p class="small muted">Gentle movement still protects habit continuity on stiff or low-energy days, but on normal days you need enough challenge to feel genuinely accomplished afterward.</p>
         `;
       } else if (val <= 68) {
         dot.setAttribute("fill", "var(--success, var(--fb-success))");
-        label.textContent = "Longevity Edge (1–3 Reps in Reserve)";
+        label.textContent = "Goldilocks Edge (Engaging & Energizing)";
         label.style.color = "var(--success, var(--fb-success))";
         fb.innerHTML = `
-          <div class="semi text-success">Sweet Spot: Mild Good Soreness + Energy Intact</div>
-          <p class="small muted">Hard enough that the final 2 reps slow down and feel meaningful—light enough that you walk away energized for coding and dog play, without triggering joint flare-ups.</p>
-          <div class="small"><strong>Rule of thumb:</strong> Micro-doses stay at 2–3 RIR; open garage sessions push to 1–2 RIR.</div>
+          <div class="semi text-success">Sweet Spot: Accomplishment Without Energy Drain</div>
+          <p class="small muted">Challenging enough to trigger progress, focus, and satisfying post-session energy—while leaving a buffer so you still feel great for dog walks, work, and joint recovery.</p>
         `;
       } else {
         dot.setAttribute("fill", "var(--error, var(--fb-error))");
-        label.textContent = "Too Hard (Energy Drain / Flare Risk)";
+        label.textContent = "Too Hard (Dread, Energy Drain & Flare Risk)";
         label.style.color = "var(--error, var(--fb-error))";
         fb.innerHTML = `
-          <div class="semi text-error">Over-Reaching Steals Tomorrow’s Consistency</div>
-          <p class="small muted">Grinding to failure drains energy for evening dog walks, creates dread about starting next time, and spikes autoimmune joint flare risk.</p>
-          <div class="small semi text-primary">Fix: Cap garage sessions at 20–25 min and leave 1–2 clean reps in the tank. Longevity rewards decades of steady B+ days over sporadic A+ burnout.</div>
+          <div class="semi text-error">Over-Reaching Breaks Tomorrow’s Habit</div>
+          <p class="small muted">Pushing to exhaustion makes your brain associate movement with dread, steals energy from dog play, and increases joint flare risk. Longevity rewards years of steady B+ days over rare A+ grinds.</p>
         `;
       }
     }
     goldSlider.addEventListener("input", e => updateGoldilocks(+e.target.value));
     updateGoldilocks(52);
 
-    // ---------- 7. Distributed Week Tracker ----------
+    // ---------- 7. Plateau of Latent Potential ----------
+    const weekSlider = document.getElementById("week-slider");
+    const expY = t => 138 - t * 116;
+    const actY = t => 138 - 122 * Math.pow(t, 2.35);
+
+    (() => {
+      const curvePts = [];
+      const valleyTop = [];
+      const valleyBottom = [];
+      for (let i = 0; i <= 60; i++) {
+        const t = i / 60;
+        const x = 35 + t * 355;
+        const ya = actY(t);
+        const ye = expY(t);
+        curvePts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${ya.toFixed(1)}`);
+        if (ya >= ye) {
+          valleyTop.push(`${x.toFixed(1)} ${ye.toFixed(1)}`);
+          valleyBottom.unshift(`${x.toFixed(1)} ${ya.toFixed(1)}`);
+        }
+      }
+      document.getElementById("actual-curve").setAttribute("d", curvePts.join(" "));
+      if (valleyTop.length > 1) {
+        const d = `M ${valleyTop[0]} ` + valleyTop.slice(1).map(p => `L ${p}`).join(" ") + " " + valleyBottom.map(p => `L ${p}`).join(" ") + " Z";
+        document.getElementById("valley-fill").setAttribute("d", d);
+      }
+    })();
+
+    function updateWeek(week) {
+      const t = (week - 1) / 15;
+      const x = 35 + t * 355;
+      document.getElementById("week-line").setAttribute("x1", x.toFixed(1));
+      document.getElementById("week-line").setAttribute("x2", x.toFixed(1));
+      document.getElementById("week-dot-exp").setAttribute("cx", x.toFixed(1));
+      document.getElementById("week-dot-exp").setAttribute("cy", expY(t).toFixed(1));
+      document.getElementById("week-dot-act").setAttribute("cx", x.toFixed(1));
+      document.getElementById("week-dot-act").setAttribute("cy", actY(t).toFixed(1));
+      document.getElementById("week-label").textContent = "Week " + week;
+
+      const fb = document.getElementById("week-feedback");
+      if (week <= 5) {
+        fb.innerHTML = `<strong class="text-warning">Weeks 1–5 (Valley of Disappointment):</strong> Habits are wiring in and joint patterns are becoming clearer, while big physical changes lag behind. Clear <em>tracking &amp; labeling</em> (our next phase) makes early progress immediately visible.`;
+      } else if (week <= 10) {
+        fb.innerHTML = `<strong class="text-primary">Weeks 6–10 (Momentum Shifts):</strong> Transitions feel natural instead of forced—micro-doses upstairs and hill cues happen on autopilot, and open garage windows feel genuinely appealing.`;
+      } else {
+        fb.innerHTML = `<strong class="text-success">Weeks 11–16 (Compounding Identity):</strong> Daily movement is simply part of how your house operates. Long-term longevity gains become unmistakable in energy, resilience, and everyday ease.`;
+      }
+    }
+    weekSlider.addEventListener("input", e => updateWeek(+e.target.value));
+    updateWeek(4);
+
+    // ---------- Compact Never-Miss-Twice Consistency Widget ----------
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    // 0=Rest/Office, 1=Hill/Gentle, 2=Upstairs Micro, 3=Garage Window
+    // 0=Quiet/Rest, 1=Gentle/Passive, 2=Micro-Doses, 3=Full Window
     const dayStates = [2, 1, 3, 0, 2, 3, 1];
 
     function renderTracker() {
@@ -1422,13 +1423,13 @@
       grid.innerHTML = days.map((d, i) => {
         const st = dayStates[i];
         const cls = st === 3 ? "state-3" : st === 2 ? "state-2" : st === 1 ? "state-1" : "";
-        const icon = st === 3 ? "Garage" : st === 2 ? "Micro" : st === 1 ? "Hill" : "—";
-        const label = st === 3 ? "Heavy" : st === 2 ? "Upstairs" : st === 1 ? "Gentle" : "Rest";
+        const icon = st === 3 ? "Open" : st === 2 ? "Micro" : st === 1 ? "Light" : "—";
+        const label = st === 3 ? "Window" : st === 2 ? "Snacks" : st === 1 ? "Gentle" : "Rest";
         return `
           <button data-day="${i}" class="day-btn ${cls}">
             <div class="small semi">${d}</div>
-            <div class="small mono bold" style="margin-top:4px;">${icon}</div>
-            <div class="small" style="opacity:0.85; margin-top:2px;">${label}</div>
+            <div class="small mono bold" style="margin-top:3px;">${icon}</div>
+            <div class="small" style="opacity:0.85; margin-top:1px;">${label}</div>
           </button>
         `;
       }).join("");
@@ -1441,27 +1442,20 @@
         });
       });
 
-      const garage = dayStates.filter(s => s === 3).length;
-      const micro  = dayStates.filter(s => s === 2).length;
-      const hill   = dayStates.filter(s => s === 1).length;
-      const active = garage + micro + hill;
-
+      const active = dayStates.filter(s => s > 0).length;
       let maxMiss = 0, cur = 0;
       dayStates.forEach(s => { if (s === 0) { cur++; maxMiss = Math.max(maxMiss, cur); } else cur = 0; });
 
       const status = document.getElementById("tracker-status");
       if (active === 0) {
         status.className = "status-banner status-error";
-        status.innerHTML = `<strong>Zero Movement Votes:</strong> Skip the garage entirely—just do one 20-second doorway hang after your next laptop block to restart momentum.`;
+        status.innerHTML = `<strong>Zero Votes:</strong> Use the 2-Minute Rule—one tiny transition cue restarts the whole chain.`;
       } else if (maxMiss >= 3) {
         status.className = "status-banner status-warning";
-        status.innerHTML = `<strong>${maxMiss}-Day Gap Detected:</strong> Drop one 2-minute upstairs micro-dose or evening floor-sitting block in the middle to honor <em>Never Miss Twice</em>.`;
-      } else if (active >= 5 && (garage >= 1 || micro >= 2)) {
-        status.className = "status-banner status-success";
-        status.innerHTML = `<strong>Ideal Longevity Week (${garage} Garage • ${micro} Upstairs Micro • ${hill} Hill/Gentle):</strong> Movement distributed across the week without relying on daily garage trips—protecting energy and recovery.`;
+        status.innerHTML = `<strong>${maxMiss}-Day Gap:</strong> Drop a single gentle or micro-dose day in the middle to practice <em>Never Miss Twice</em>.`;
       } else {
-        status.className = "status-banner status-primary";
-        status.innerHTML = `<strong>Solid Steady Week (${garage} Garage • ${micro} Upstairs Micro • ${hill} Hill/Gentle):</strong> Identity stays strong even on busy office or guest-heavy weeks.`;
+        status.className = "status-banner status-success";
+        status.innerHTML = `<strong>Identity Protected (${active}/7 active days):</strong> Mixing full windows, micro-snacks, and gentle days eliminates the all-or-nothing trap.`;
       }
     }
     renderTracker();
