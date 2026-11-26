@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environment &amp; Mindset Playbook — Atomic Habits × Kelly Starrett</title>
+  <style>
+    /* Fallback palette for standalone browsers & GitHub Pages.
+       Host tokens (--background, --card, etc.) are never overwritten on :root so Antigravity theming works seamlessly. */
+    :root {
+      --fb-bg: #f5f7fa;
+      --fb-content: #edf1f6;
+      --fb-card: #ffffff;
+      --fb-border: #d7dfe9;
+      --fb-card-border: #e3e9f0;
+      --fb-fg: #111827;
+      --fb-muted: #526074;
+      --fb-primary: #2563eb;
+      --fb-primary-fg: #ffffff;
+      --fb-secondary: #e2e8f0;
+      --fb-success: #16a34a;
+      --fb-warning: #d97706;
+      --fb-error: #dc2626;
+      --fb-chart1: #0284c7;
+      --fb-chart2: #0d9488;
+      --fb-chart3: #7c3aed;
+      --fb-chart4: #ea580c;
+      --fb-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --fb-bg: #0d1117;
+        --fb-content: #151b23;
+        --fb-card: #1b222c;
+        --fb-border: #2e3846;
+        --fb-card-border: #27303d;
+        --fb-fg: #eef2f7;
+        --fb-muted: #98a4b5;
+        --fb-primary: #60a5fa;
+        --fb-primary-fg: #0b1220;
+        --fb-secondary: #262f3d;
+        --fb-success: #4ade80;
+        --fb-warning: #fbbf24;
+        --fb-error: #f87171;
+        --fb-chart1: #38bdf8;
+        --fb-chart2: #2dd4bf;
+        --fb-chart3: #a78bfa;
+        --fb-chart4: #fb923c;
+        --fb-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --fb-bg: #0d1117;
+      --fb-content: #151b23;
+      --fb-card: #1b222c;
+      --fb-border: #2e3846;
+      --fb-card-border: #27303d;
+      --fb-fg: #eef2f7;
+      --fb-muted: #98a4b5;
+      --fb-primary: #60a5fa;
+      --fb-primary-fg: #0b1220;
+      --fb-secondary: #262f3d;
+      --fb-success: #4ade80;
+      --fb-warning: #fbbf24;
+      --fb-error: #f87171;
+      --fb-chart1: #38bdf8;
+      --fb-chart2: #2dd4bf;
+      --fb-chart3: #a78bfa;
+      --fb-chart4: #fb923c;
+      --fb-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--background, var(--fb-bg));
+      color: var(--foreground, var(--fb-fg));
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Header */
+    .hero {
+      background-color: var(--card, var(--fb-card));
+      border: 1px solid var(--border, var(--fb-border));
+      border-radius: 14px;
+      padding: 24px 26px;
+      box-shadow: var(--fb-shadow);
+    }
+
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    p { margin: 0; }
+
+    .muted { color: var(--muted-foreground, var(--fb-muted)); }
+    .small { font-size: 12px; }
+    .semi  { font-weight: 600; }
+    .bold  { font-weight: 700; }
+
+    .text-primary { color: var(--primary, var(--fb-primary)); }
+    .text-chart2  { color: var(--chart-2, var(--fb-chart2)); }
+    .text-success { color: var(--success, var(--fb-success)); }
+    .text-warning { color: var(--warning, var(--fb-warning)); }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    .btn {
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border, var(--fb-border));
+      background-color: var(--content, var(--fb-content));
+      color: var(--foreground, var(--fb-fg));
+      cursor: pointer;
+    }
+    .btn:hover { background-color: var(--secondary, var(--fb-secondary)); }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.01em;
+    }
+    .tag-clear {
+      background-color: color-mix(in srgb, var(--primary, var(--fb-primary)) 13%, transparent);
+      color: var(--primary, var(--fb-primary));
+    }
+    .tag-starrett {
+      background-color: color-mix(in srgb, var(--chart-2, var(--fb-chart2)) 15%, transparent);
+      color: var(--chart-2, var(--fb-chart2));
+    }
+    .tag-both {
+      background-color: color-mix(in srgb, var(--chart-3, var(--fb-chart3)) 14%, transparent);
+      color: var(--chart-3, var(--fb-chart3));
+    }
+    .tag-applied {
+      background-color: color-mix(in srgb, var(--success, var(--fb-success)) 14%, transparent);
+      color: var(--success, var(--fb-success));
+    }
+
+    /* Sticky Column Headers */
+    .pane-headers {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+      gap: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border, var(--fb-border));
+      background-color: var(--card, var(--fb-card));
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      box-shadow: var(--fb-shadow);
+    }
+
+    .pane-header-left {
+      padding: 11px 20px;
+      background-color: var(--content, var(--fb-content));
+      border-right: 1px solid var(--border, var(--fb-border));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pane-header-right {
+      padding: 11px 22px;
+      background-color: var(--card, var(--fb-card));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pane-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Parallel Paired Rows */
+    .pair-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+      border: 1px solid var(--border, var(--fb-border));
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--fb-shadow);
+      background-color: var(--card, var(--fb-card));
+    }
+
+    .pane-left {
+      background-color: var(--content, var(--fb-content));
+      padding: 22px;
+      border-right: 1px solid var(--border, var(--fb-border));
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pane-right {
+      background-color: var(--card, var(--fb-card));
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .row-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .row-num {
+      font-size: 12px;
+      font-weight: 700;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--muted-foreground, var(--fb-muted));
+    }
+
+    .diagram-box {
+      background-color: var(--card, var(--fb-card));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .quote-note {
+      border-left: 3px solid var(--primary, var(--fb-primary));
+      padding: 6px 0 6px 12px;
+      font-size: 13px;
+      color: var(--muted-foreground, var(--fb-muted));
+    }
+    .quote-note.starrett { border-left-color: var(--chart-2, var(--fb-chart2)); }
+
+    /* Applied callouts & lists */
+    .reframe-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .reframe-box {
+      border-radius: 10px;
+      padding: 11px 13px;
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      background-color: var(--content, var(--fb-content));
+      font-size: 13px;
+    }
+    .reframe-box.new {
+      border-color: color-mix(in srgb, var(--success, var(--fb-success)) 45%, var(--card-border, var(--fb-card-border)));
+      background-color: color-mix(in srgb, var(--success, var(--fb-success)) 8%, var(--card, var(--fb-card)));
+    }
+
+    .action-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .action-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+      background-color: var(--success, var(--fb-success));
+    }
+    .dot-blue   { background-color: var(--primary, var(--fb-primary)); }
+    .dot-teal   { background-color: var(--chart-2, var(--fb-chart2)); }
+    .dot-amber  { background-color: var(--warning, var(--fb-warning)); }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .mini-card {
+      background-color: var(--content, var(--fb-content));
+      border: 1px solid var(--card-border, var(--fb-card-border));
+      border-radius: 10px;
+      padding: 11px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .next-phase {
+      background-color: var(--card, var(--fb-card));
+      border: 1px dashed var(--border, var(--fb-border));
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Mobile & Print responsiveness */
+    .mobile-pane-label { display: none; }
+
+    @media (max-width: 860px) {
+      .pane-headers { display: none; }
+      .pair-row { grid-template-columns: 1fr; }
+      .pane-left { border-right: none; border-bottom: 1px solid var(--border, var(--fb-border)); }
+      .reframe-pair, .mini-grid { grid-template-columns: 1fr; }
+      .mobile-pane-label {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 2px;
+      }
+    }
+
+    @media print {
+      body { background: #ffffff; color: #111827; }
+      .btn-row, .pane-headers { display: none; }
+      .pair-row { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="hero">
+      <div class="hero-top">
+        <div class="btn-row">
+          <span class="tag tag-clear">Atomic Habits (James Clear)</span>
+          <span class="tag tag-starrett">Built to Move (Kelly Starrett)</span>
+          <span class="tag tag-applied">Environment &amp; Mindset Only</span>
+        </div>
+        <div class="btn-row">
+          <button id="theme-toggle" class="btn" title="Switch Light/Dark Theme">Switch Theme</button>
+          <button onclick="window.print()" class="btn" title="Print or Save as PDF">Print / PDF</button>
+        </div>
+      </div>
+      <h1>Building a Life That Naturally Challenges Our Bodies</h1>
+      <p class="muted" style="max-width: 820px;">
+        A parallel reference guide separating <strong>core principles</strong> (left) from <strong>how we apply them to our actual home, schedule, and mindset</strong> (right).
+        Intentionally leaves out exercise programming, sets, and reps—focusing first on removing friction and reframing how movement fits into daily life.
+      </p>
+    </header>
+
+    <!-- Sticky Parallel Column Headers -->
+    <div class="pane-headers" aria-hidden="true">
+      <div class="pane-header-left">
+        <span class="pane-kicker text-primary">Core Principle</span>
+        <span class="small muted">Atomic Habits &amp; Kelly Starrett</span>
+      </div>
+      <div class="pane-header-right">
+        <span class="pane-kicker text-success">Applied to Us</span>
+        <span class="small muted">What It Means &amp; What We Can Do</span>
+      </div>
+    </div>
+
+    <!-- ROW 1: Identity First -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">01 / IDENTITY</span>
+          <span class="tag tag-clear">Atomic Habits</span>
+        </div>
+        <h2>Start With Identity, Not Outcomes</h2>
+        <p class="muted">
+          Behavior change has three layers: <strong>Outcomes</strong> (what you get), <strong>Processes</strong> (what you do), and <strong>Identity</strong> (who you believe you are).
+          Outcome goals (“lift more”) fade whenever comfort competes. Identity works in the moment—every small action casts a <em>vote</em> for the kind of person you are becoming.
+        </p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 360 150" style="width:100%; height:auto; display:block;" role="img" aria-label="Identity, Processes, and Outcomes concentric diagram">
+            <ellipse cx="180" cy="75" rx="160" ry="64" fill="var(--chart-3, var(--fb-chart3))" fill-opacity="0.11" stroke="var(--chart-3, var(--fb-chart3))" stroke-width="1.5" />
+            <ellipse cx="180" cy="75" rx="108" ry="44" fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.15" stroke="var(--chart-2, var(--fb-chart2))" stroke-width="1.5" />
+            <ellipse cx="180" cy="75" rx="56" ry="24" fill="var(--primary, var(--fb-primary))" fill-opacity="0.24" stroke="var(--primary, var(--fb-primary))" stroke-width="2" />
+            <text x="180" y="79" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="11.5" font-weight="700">IDENTITY</text>
+            <text x="180" y="46" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="600">PROCESSES (SYSTEM)</text>
+            <text x="180" y="24" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10" font-weight="600">OUTCOMES (LONGEVITY &amp; STRENGTH)</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Reframe Around Longevity &amp; Small Votes</h3>
+        <div class="reframe-pair">
+          <div class="reframe-box">
+            <div class="small muted semi" style="margin-bottom:4px;">Old Script</div>
+            “We need to get motivated to go work out more often.”
+          </div>
+          <div class="reframe-box new">
+            <div class="small text-success semi" style="margin-bottom:4px;">New Frame</div>
+            “We’re people who take care of our future bodies every day—in ways that fit our real energy and space.”
+          </div>
+        </div>
+        <ul class="action-list">
+          <li><span class="dot"></span><span><strong>Longevity is the anchor:</strong> Strength today is a great bonus, but the identity is about staying resilient, mobile, and capable decades from now.</span></li>
+          <li><span class="dot"></span><span><strong>Every vote counts equally toward identity:</strong> A 90-second break upstairs, active floor-sitting with a laptop, or a gentle joint-respecting day casts a vote just as much as a garage session.</span></li>
+          <li><span class="dot"></span><span><strong>Separate goals, shared culture:</strong> We each have different bodies and energy patterns, yet moving regularly becomes simply “what we do” in our household.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ROW 2: Distributed Movement vs Workout Box -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">02 / DISTRIBUTION</span>
+          <span class="tag tag-starrett">Kelly Starrett</span>
+        </div>
+        <h2>Movement as Daily Nutrition, Not a "Workout Box"</h2>
+        <p class="muted">
+          Kelly Starrett’s core thesis in <em>Built to Move</em>: you can’t isolate movement into a single 1-hour box and sit motionless for the other 23 hours.
+          Spreading small bouts of loading, position changes, hanging, and walking throughout your normal day builds durability without needing marathon gym willpower.
+        </p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 380 120" style="width:100%; height:auto; display:block;" role="img" aria-label="Isolated workout box versus distributed movement across the day">
+            <!-- Top Row: Box -->
+            <text x="4" y="16" fill="var(--muted-foreground, var(--fb-muted))" font-size="10.5" font-weight="700">OLD: ALL-OR-NOTHING WORKOUT BOX</text>
+            <rect x="4" y="24" width="372" height="24" rx="6" fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.14" stroke="var(--border, var(--fb-border))" />
+            <text x="142" y="40" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="10">Sitting at desk / laptop all day</text>
+            <rect x="284" y="22" width="62" height="28" rx="6" fill="var(--error, var(--fb-error))" fill-opacity="0.2" stroke="var(--error, var(--fb-error))" stroke-width="1.5" stroke-dasharray="3 2" />
+            <text x="315" y="40" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="10" font-weight="700">Garage?</text>
+
+            <!-- Bottom Row: Distributed -->
+            <text x="4" y="76" fill="var(--chart-2, var(--fb-chart2))" font-size="10.5" font-weight="700">NEW: DISTRIBUTED MOVEMENT NUTRITION</text>
+            <rect x="4" y="84" width="372" height="24" rx="6" fill="var(--card, var(--fb-card))" stroke="var(--border, var(--fb-border))" />
+            <rect x="14"  y="86" width="34" height="20" rx="4" fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.35" />
+            <rect x="76"  y="86" width="38" height="20" rx="4" fill="var(--primary, var(--fb-primary))" fill-opacity="0.32" />
+            <rect x="146" y="86" width="48" height="20" rx="4" fill="var(--success, var(--fb-success))" fill-opacity="0.32" />
+            <rect x="226" y="86" width="42" height="20" rx="4" fill="var(--chart-3, var(--fb-chart3))" fill-opacity="0.30" />
+            <rect x="294" y="86" width="34" height="20" rx="4" fill="var(--warning, var(--fb-warning))" fill-opacity="0.32" />
+            <rect x="338" y="86" width="30" height="20" rx="4" fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.35" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Flip the 80 / 20 Balance of Our Home</h3>
+        <ul class="action-list">
+          <li><span class="dot dot-teal"></span><span><strong>Kill the "didn't go to the garage = zero" guilt:</strong> Most daily physical nutrition can happen right upstairs during normal WFH life and outside on hill dog walks.</span></li>
+          <li><span class="dot dot-teal"></span><span><strong>Treat the garage as a 20% bonus, not the bottleneck:</strong> When conditions are open (daytime, between guests), the garage is a great upgrade—never the single point of failure for the week.</span></li>
+          <li><span class="dot dot-teal"></span><span><strong>Break up software-engineer sitting:</strong> Tiny movement snacks across coding blocks undo stiffness far better than sitting for 8 hours and hoping evening willpower survives.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ROW 3: Environment Design (1st Law: Make It Obvious) -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">03 / ENVIRONMENT &amp; CUES</span>
+          <span class="tag tag-both">Clear × Starrett</span>
+        </div>
+        <h2>Make It Obvious: Design the Space Where You Actually Live</h2>
+        <p class="muted">
+          <strong>1st Law (Make It Obvious):</strong> People rarely forget habits that live in their direct line of sight.
+          Starrett calls this building an <em>active environment</em>—putting tools, floor space, and subtle prompts in the rooms you already spend hours in, instead of hiding them behind closed doors.
+        </p>
+        <div class="quote-note starrett">
+          “Your environment is the invisible hand that shapes human behavior. Don’t rely on remembering—make the cue unavoidable.”
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Bring Cues Upstairs &amp; Pair With Real Screen Spots</h3>
+        <ul class="action-list">
+          <li><span class="dot dot-blue"></span><span><strong>Eliminate “out of sight, out of mind”:</strong> Keep a few quiet, grab-and-go tools upstairs where we actually live and work—alongside the pull-up bar and weights already upstairs—so cues trigger automatically.</span></li>
+          <li><span class="dot dot-blue"></span><span><strong>Build around laptops, not the old TV:</strong> Since laptops are our real default screens, set up at least one comfortable floor/mat laptop spot (low table + cushion) so evening screen time passively invites floor-sitting and position changes.</span></li>
+          <li><span class="dot dot-blue"></span><span><strong>Place cues along existing paths:</strong> Desk → kitchen, hallway doorways, and right beside the dog leash—places our eyes and hands already pass every day.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ROW 4: Event-Based Triggers (Habit Stacking) -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">04 / HABIT STACKING</span>
+          <span class="tag tag-clear">Atomic Habits</span>
+        </div>
+        <h2>Anchor to Existing Events, Not Clock Times</h2>
+        <p class="muted">
+          Habit stacking attaches a new cue directly onto an automatic transition you already do:
+          <strong>“After [existing event], I will [tiny action].”</strong>
+          When life doesn’t run on fixed clock hours, event anchors survive busy days far better than rigid calendar alarms.
+        </p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 380 76" style="width:100%; height:auto; display:block;" role="img" aria-label="Event trigger stack flow">
+            <rect x="6" y="18" width="112" height="40" rx="8" fill="var(--content, var(--fb-content))" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <text x="62" y="35" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5" font-weight="700">EXISTING EVENT</text>
+            <text x="62" y="49" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="600">Already happens</text>
+
+            <path d="M 122 38 L 144 38" stroke="var(--primary, var(--fb-primary))" stroke-width="2" />
+            <polygon points="144,34 152,38 144,42" fill="var(--primary, var(--fb-primary))" />
+
+            <rect x="156" y="18" width="102" height="40" rx="8" fill="var(--primary, var(--fb-primary))" fill-opacity="0.15" stroke="var(--primary, var(--fb-primary))" stroke-width="1.5" />
+            <text x="207" y="35" text-anchor="middle" fill="var(--primary, var(--fb-primary))" font-size="9.5" font-weight="700">TINY CUE</text>
+            <text x="207" y="49" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="600">1–3 min action</text>
+
+            <path d="M 262 38 L 284 38" stroke="var(--success, var(--fb-success))" stroke-width="2" />
+            <polygon points="284,34 292,38 284,42" fill="var(--success, var(--fb-success))" />
+
+            <rect x="296" y="18" width="78" height="40" rx="8" fill="var(--success, var(--fb-success))" fill-opacity="0.15" stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
+            <text x="335" y="35" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="9.5" font-weight="700">PAYOFF</text>
+            <text x="335" y="49" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="600">Vote cast</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Our Four Reliable Non-Clock Anchors</h3>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="small bold text-primary">1. WFH Desk Transitions</div>
+            <p class="small muted">Standing up after a call, waiting on builds/tests, or refilling water—natural pause points every WFH day.</p>
+          </div>
+          <div class="mini-card">
+            <div class="small bold text-chart2">2. Evening Laptop Time</div>
+            <p class="small muted">Pair watching/browsing with floor posture or brief micro-sets between videos so screens become a cue instead of an obstacle.</p>
+          </div>
+          <div class="mini-card">
+            <div class="small bold text-success">3. Hill Walk Sniff-Breaks</div>
+            <p class="small muted">Reframe stop-and-sniff pauses on the hill from “waiting” into built-in movement/balance triggers—plus short run bursts when the dog wants to sprint.</p>
+          </div>
+          <div class="mini-card">
+            <div class="small bold text-warning">4. Eating Together</div>
+            <p class="small muted">Even though meal times shift daily, eating together is guaranteed—an effortless shared anchor for a 2–3 minute check-in or micro-habit.</p>
+          </div>
+        </div>
+        <p class="small muted">
+          <strong>On 2×/week office days:</strong> Drop evening garage expectations entirely—lean on commute/stair micro-habits and one tiny arrival cue when getting home.
+        </p>
+      </div>
+    </article>
+
+    <!-- ROW 5: Friction Reduction & Sensory Redesign (2nd & 3rd Laws) -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">05 / FRICTION &amp; DREAD</span>
+          <span class="tag tag-clear">Atomic Habits</span>
+        </div>
+        <h2>Make It Attractive &amp; Easy: Strip Away Activation Energy</h2>
+        <p class="muted">
+          <strong>2nd &amp; 3rd Laws:</strong> Humans default to the lowest-friction option. Every tiny hurdle—cold air, dust, awkward hallway noise, decision fatigue—multiplies resistance before you start.
+          Use the <strong>Two-Minute Rule</strong>: scale the entry commitment down so starting takes almost zero willpower.
+        </p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 380 154" style="width:100%; height:auto; display:block;" role="img" aria-label="House friction map showing upstairs, guest hallway, garage, and hill">
+            <!-- Ground & Hill -->
+            <path d="M 0 132 L 222 132 Q 268 132 308 100 L 380 56 L 380 154 L 0 154 Z"
+              fill="var(--chart-2, var(--fb-chart2))" fill-opacity="0.14" stroke="var(--border, var(--fb-border))" />
+            <!-- House -->
+            <rect x="14" y="14" width="204" height="118" rx="5" fill="var(--card, var(--fb-card))" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <line x1="14" y1="68" x2="218" y2="68" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+
+            <!-- Upstairs -->
+            <rect x="20" y="20" width="192" height="42" rx="4" fill="var(--success, var(--fb-success))" fill-opacity="0.12" />
+            <text x="28" y="37" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">UPSTAIRS (80% • ZERO FRICTION)</text>
+            <text x="28" y="52" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Warm, private, visible cues, laptop spots</text>
+
+            <!-- Garage -->
+            <rect x="20" y="74" width="124" height="52" rx="4" fill="var(--chart-1, var(--fb-chart1))" fill-opacity="0.12" stroke="var(--chart-1, var(--fb-chart1))" stroke-width="1.2" />
+            <text x="28" y="90" fill="var(--foreground, var(--fb-fg))" font-size="10" font-weight="700">GARAGE (20% BONUS)</text>
+            <text x="28" y="104" fill="var(--muted-foreground, var(--fb-muted))" font-size="9">Door shut • Pre-warm</text>
+            <text x="28" y="117" fill="var(--muted-foreground, var(--fb-muted))" font-size="9">Clean cozy corner</text>
+
+            <!-- Guest Hall -->
+            <rect x="150" y="74" width="62" height="52" rx="4" fill="var(--warning, var(--fb-warning))" fill-opacity="0.12" stroke="var(--warning, var(--fb-warning))" stroke-dasharray="3 2" />
+            <text x="181" y="94" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="9.5" font-weight="700">GUEST</text>
+            <text x="181" y="107" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="8.5">Daytime OK</text>
+            <text x="181" y="118" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="8.5">/ Empty gap</text>
+
+            <!-- Hill -->
+            <text x="308" y="116" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="10.5" font-weight="700">HILL WALKS</text>
+            <text x="308" y="130" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Built-in slope + sniff cues</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Neutralize Each Specific Barrier Directly</h3>
+        <ul class="action-list">
+          <li><span class="dot dot-amber"></span><span><strong>Downstairs guest mental barrier:</strong> Explicitly give ourselves permission during daytime non-quiet hours and between bookings—and rely on upstairs during quiet hours so there’s zero awkwardness.</span></li>
+          <li><span class="dot dot-amber"></span><span><strong>Garage cold, dust &amp; door friction:</strong> Keep the main garage door <em>closed</em> (blocks loud door noise, wind, heat loss, and passersby), pre-warm beforehand, and sweep/light one small corner so it feels cozy rather than utilitarian.</span></li>
+          <li><span class="dot dot-amber"></span><span><strong>Laptop inertia:</strong> Use the 2-Minute Rule—commit only to standing up and touching the first cue, with full permission to stop after two minutes.</span></li>
+          <li><span class="dot dot-amber"></span><span><strong>Decision fatigue (“what matters?”):</strong> Solved cleanly in our next phase—once we define our tracking &amp; labeling, the choice of what to do shrinks to a 3-second glance.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ROW 6: Goldilocks Edge & Energy Protection -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">06 / EFFORT CALIBRATION</span>
+          <span class="tag tag-both">Clear × Starrett</span>
+        </div>
+        <h2>The Goldilocks Rule: Work at the Sustainable Edge</h2>
+        <p class="muted">
+          Humans stay most engaged right at the edge of current ability—challenging enough to feel worthwhile, not so brutal that it triggers dread or burnout.
+          Too easy creates boredom; too hard destroys tomorrow’s consistency.
+        </p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 380 128" style="width:100%; height:auto; display:block;" role="img" aria-label="Goldilocks bell curve showing boredom, sustainable edge, and burnout">
+            <rect x="16"  y="12" width="110" height="90" fill="var(--muted-foreground, var(--fb-muted))" fill-opacity="0.08" />
+            <rect x="126" y="12" width="128" height="90" fill="var(--success, var(--fb-success))" fill-opacity="0.14" />
+            <rect x="254" y="12" width="110" height="90" fill="var(--error, var(--fb-error))" fill-opacity="0.11" />
+            <text x="71"  y="28" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5" font-weight="700">BOREDOM</text>
+            <text x="190" y="28" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="10" font-weight="700">GOLDILOCKS EDGE</text>
+            <text x="309" y="28" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="9.5" font-weight="700">DREAD / DRAIN</text>
+            <line x1="16" y1="102" x2="364" y2="102" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <path d="M 22 98 C 92 96, 134 38, 190 38 C 246 38, 288 96, 358 98" fill="none" stroke="var(--primary, var(--fb-primary))" stroke-width="2.5" stroke-linecap="round" />
+            <circle cx="190" cy="38" r="5" fill="var(--success, var(--fb-success))" stroke="var(--card, var(--fb-card))" stroke-width="2" />
+            <text x="22"  y="118" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">No stimulus</text>
+            <text x="190" y="118" text-anchor="middle" fill="var(--foreground, var(--fb-fg))" font-size="9.5" font-weight="700">Mild good effort • Energy intact</text>
+            <text x="358" y="118" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Exhausting</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Protect Energy for Dog Play &amp; Avoid Over-Reaching</h3>
+        <div class="reframe-pair">
+          <div class="reframe-box">
+            <div class="small muted semi" style="margin-bottom:4px;">Old Script</div>
+            “If I push hard right now, I’ll be too drained to walk or play with the dog later.”
+          </div>
+          <div class="reframe-box new">
+            <div class="small text-success semi" style="margin-bottom:4px;">New Frame</div>
+            “Stopping with gas left in the tank <em>creates</em> energy—it leaves me fresher for walks, play, and coding.”
+          </div>
+        </div>
+        <ul class="action-list">
+          <li><span class="dot"></span><span><strong>Aim for mild, satisfying soreness—not depletion:</strong> Longevity rewards decades of repeatable B+ days over sporadic all-out grinds.</span></li>
+          <li><span class="dot"></span><span><strong>Leave wanting slightly more:</strong> Ending a session feeling energized trains your brain to look forward to the next cue instead of avoiding it.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ROW 7: Joint Variability & Curiosity Mindset -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">07 / BODY FEEDBACK</span>
+          <span class="tag tag-both">Starrett × Clear</span>
+        </div>
+        <h2>Scale Effort to Daily Capacity Instead of Quitting</h2>
+        <p class="muted">
+          Consistent movers don’t treat capacity as fixed—they scale smoothly between high-capacity, medium-capacity, and restorative days.
+          Body signals aren’t a reason to abandon the habit; they’re feedback guiding which gear to shift into today.
+        </p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 380 68" style="width:100%; height:auto; display:block;" role="img" aria-label="Three-tier daily capacity spectrum">
+            <rect x="6"   y="12" width="116" height="44" rx="8" fill="var(--success, var(--fb-success))" fill-opacity="0.16" stroke="var(--success, var(--fb-success))" stroke-width="1.5" />
+            <text x="64"  y="31" text-anchor="middle" fill="var(--success, var(--fb-success))" font-size="10.5" font-weight="700">GREEN DAY</text>
+            <text x="64"  y="46" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Calm • Explore load</text>
+
+            <rect x="132" y="12" width="116" height="44" rx="8" fill="var(--warning, var(--fb-warning))" fill-opacity="0.16" stroke="var(--warning, var(--fb-warning))" stroke-width="1.5" />
+            <text x="190" y="31" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="10.5" font-weight="700">YELLOW DAY</text>
+            <text x="190" y="46" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Sensitive • Scale gently</text>
+
+            <rect x="258" y="12" width="116" height="44" rx="8" fill="var(--error, var(--fb-error))" fill-opacity="0.14" stroke="var(--error, var(--fb-error))" stroke-width="1.5" />
+            <text x="316" y="31" text-anchor="middle" fill="var(--error, var(--fb-error))" font-size="10.5" font-weight="700">RED DAY</text>
+            <text x="316" y="46" text-anchor="middle" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Flare • Restore only</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Replace Flare Anxiety With Calm Discovery</h3>
+        <div class="reframe-pair">
+          <div class="reframe-box">
+            <div class="small muted semi" style="margin-bottom:4px;">Old Script</div>
+            “Not knowing what will irritate a joint makes it safer to skip altogether.”
+          </div>
+          <div class="reframe-box new">
+            <div class="small text-success semi" style="margin-bottom:4px;">New Frame</div>
+            “Every joint signal is useful data. Scaling to the day’s tier keeps us safe while we learn what works.”
+          </div>
+        </div>
+        <ul class="action-list">
+          <li><span class="dot dot-teal"></span><span><strong>Non-binary participation:</strong> A gentle or restorative day still preserves identity and momentum—without pushing a sensitive joint.</span></li>
+          <li><span class="dot dot-teal"></span><span><strong>Experimentation beats guessing:</strong> Rather than trying to predict flare triggers in our heads, we’ll pair calm movement with lightweight logging next so patterns become clear over time.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ROW 8: Make It Satisfying, Plateau of Latent Potential & Never Miss Twice -->
+    <article class="pair-row">
+      <div class="pane-left">
+        <div class="row-meta">
+          <span class="row-num">08 / REWARD &amp; PATIENCE</span>
+          <span class="tag tag-clear">Atomic Habits</span>
+        </div>
+        <h2>Make It Satisfying, Survive the Valley &amp; "Never Miss Twice"</h2>
+        <p class="muted">
+          <strong>4th Law (Make It Satisfying):</strong> Real longevity gains compound slowly—creating an early <em>Valley of Disappointment</em> where effort doesn’t yet look dramatic.
+          Immediate feedback bridges that valley, and the rule <strong>Never Miss Twice</strong> ensures a busy day never snowballs into quitting.
+        </p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 380 128" style="width:100%; height:auto; display:block;" role="img" aria-label="Plateau of latent potential compounding curve">
+            <line x1="24" y1="104" x2="362" y2="104" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <line x1="24" y1="14"  x2="24"  y2="104" stroke="var(--border, var(--fb-border))" stroke-width="1.5" />
+            <path d="M 24 104 L 224 46 C 170 82, 110 98, 24 104 Z" fill="var(--warning, var(--fb-warning))" fill-opacity="0.18" />
+            <line x1="24" y1="104" x2="356" y2="18" stroke="var(--muted-foreground, var(--fb-muted))" stroke-width="1.6" stroke-dasharray="4 3" />
+            <path d="M 24 104 C 135 102, 200 86, 252 50 C 290 25, 322 18, 356 14" fill="none" stroke="var(--primary, var(--fb-primary))" stroke-width="2.6" stroke-linecap="round" />
+            <text x="142" y="88" text-anchor="middle" fill="var(--warning, var(--fb-warning))" font-size="9.5" font-weight="700">Valley of Disappointment</text>
+            <text x="292" y="34" fill="var(--primary, var(--fb-primary))" font-size="9.5" font-weight="700">Compounding</text>
+            <text x="24"  y="120" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Start</text>
+            <text x="356" y="120" text-anchor="end" fill="var(--muted-foreground, var(--fb-muted))" font-size="9.5">Months / Years</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pane-right">
+        <span class="mobile-pane-label text-success">Applied to Us</span>
+        <h3>Reward Today &amp; Keep the Chain Resilient</h3>
+        <ul class="action-list">
+          <li><span class="dot dot-blue"></span><span><strong>Lean into immediate rewards we already feel:</strong> Post-effort energy, mild satisfying soreness, feeling accomplished after coding blocks, and enjoying shared movement or screen pairing.</span></li>
+          <li><span class="dot dot-blue"></span><span><strong>Practice "Never Miss Twice":</strong> Missing on a busy office day, guest-heavy day, or flare day is completely normal. One tiny 2-minute cue the next day keeps the streak alive.</span></li>
+          <li><span class="dot dot-blue"></span><span><strong>Why tracking &amp; labeling comes next:</strong> Seeing concrete progress (and clear joint feedback) makes the early weeks immediately rewarding while long-term longevity compounds in the background.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Footer Bridge to Next Document -->
+    <footer class="next-phase">
+      <div>
+        <div class="small bold text-primary" style="text-transform:uppercase; letter-spacing:0.05em;">Next Companion Document (Separate)</div>
+        <div class="semi" style="margin-top:2px;">Tracking, Labeling &amp; Programming</div>
+        <p class="small muted">Once we decide how we want to track progress and label joint/energy responses, we’ll build a dedicated programming guide on top of this environment foundation.</p>
+      </div>
+      <span class="tag tag-clear">Phase 1 Complete: Environment &amp; Mindset</span>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const cur = root.getAttribute("data-theme") || (prefersDark ? "dark" : "light");
+      root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>
